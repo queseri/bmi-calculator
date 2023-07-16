@@ -1,66 +1,102 @@
 import { useState } from "react";
 import "./App.css";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Grid,
+  Radio,
+  RadioGroup,
+  Typography,
+} from "@mui/material";
 import { css } from "@emotion/react";
 import Logo from "./assets/images/logo.svg";
+import Metric from "./components/Metric";
+import Imperial from "./components/Imperial";
 
 function App() {
-	const [count, setCount] = useState(0);
+  const [value, setValue] = useState("metric");
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue((event.target as HTMLInputElement).value);
+  };
 
-	return (
-		<Container>
-			<Box component={"header"}>
-				<a href="/">
-					<img
-						className="logo"
-						src={Logo}
-						alt="Bmi"
-					/>
-				</a>
-				<Grid
-					container
-					spacing={2}
-					justifyContent={"center"}
-					alignItems={"center"}
-				>
-					<Grid
-						item
-						xs={12}
-						sm={6}
-					>
-						<Typography
-							variant="h1"
-							
-						>
-							Body Mass Index Calculator
-						</Typography>
-					</Grid>
-					<Grid
-						item
-						xs={12}
-						sm={6}
-					>
-						<Typography variant="body1">
-							Better understand your weight in relation to your
-							height using our body mass index (BM) calculator.
-							While BMI is not the sole determinant of a healthy
-							weight, it offers a valuable starting point to
-							evaluate your overall health and well-being.
-						</Typography>
-					</Grid>
-				</Grid>
-			</Box>
-		</Container>
-	);
+  return (
+    <Container>
+      <Box component={"header"}>
+        <a href="/">
+          <img className="logo" src={Logo} alt="Bmi" />
+        </a>
+        <Grid container justifyContent={"center"} alignItems={"center"}>
+          <Grid item xs={12} sm={6}>
+            <Typography variant="h1" gutterBottom sx={{ fontSize: "2rem" }}>
+              Body Mass Index Calculator
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              Better understand your weight in relation to your height using our
+              body mass index (BM) calculator. While BMI is not the sole
+              determinant of a healthy weight, it offers a valuable starting
+              point to evaluate your overall health and well-being.
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Box component={"form"} noValidate>
+              <FormControl fullWidth>
+                <FormLabel id="measurement" aria-hidden={true}>
+                  Enter your details below
+                </FormLabel>
+                <RadioGroup
+                  row
+                  aria-labelledby="measurement"
+                  defaultValue={value}
+                  value={value}
+                  onChange={handleChange}
+                  name="measurement-group"
+                >
+                  <FormControlLabel
+                    sx={{
+                      flex: "1 1",
+                    }}
+                    value="metric"
+                    control={<Radio />}
+                    label="Metric"
+                  />
+                  <FormControlLabel
+                    sx={{
+                      flex: "1 1",
+                    }}
+                    value="imperial"
+                    control={<Radio />}
+                    label="Imperial"
+                  />
+                </RadioGroup>
+              </FormControl>
+              {value === "metric" ? <Metric /> : <Imperial />}
+              <Box>
+                <Typography variant="h2" gutterBottom>
+                  Your BMI is...
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                  Your BMI suggests you're Your ideal weight is between What
+                  your BMI result means
+                </Typography>
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+      </Box>
+      <Box component={"main"}></Box>
+    </Container>
+  );
 }
 
 export default App;
 
 /* 
-	 Enter your details
-			below Metric Imperial Height Weight Your BMI is... Your BMI suggests
-			you're Your ideal weight is between What your BMI result means A BMI
+	
+			 A BMI
 			range of 18.5 to 24.9 is considered a 'healthy weight.' Maintaining
 			a healthy weight may lower your chances of experiencing health
 			issues later on, such as obesity and type 2 diabetes. Aim for a
@@ -89,5 +125,34 @@ export default App;
 			may affect individuals of some Black and Asian origins at lower BMIs
 			than others. To learn more, it is advised to discuss this with your
 			GP or practice nurse.
+
+        {value === "imperial" && (
+                    <FormControl fullWidth variant="filled">
+                      <TextField
+                        label="height"
+                        variant={"outlined"}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">in</InputAdornment>
+                          ),
+                        }}
+                      />
+                    </FormControl>
+                  )}
+
+
+    {value === "imperial" && (
+                    <FormControl fullWidth variant="filled">
+                      <TextField
+                        label="weight"
+                        variant={"outlined"}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">lbs</InputAdornment>
+                          ),
+                        }}
+                      />
+                    </FormControl>
+                  )}
 
 */
