@@ -7,25 +7,57 @@ import {
   FormControlLabel,
   FormLabel,
   Grid,
+  Paper,
   Radio,
-  RadioGroup,
+  RadioGroup,  
   Typography,
 } from "@mui/material";
-import { css } from "@emotion/react";
+// import { css } from "@emotion/react";
 import Logo from "./assets/images/logo.svg";
 import Metric from "./components/Metric";
 import Imperial from "./components/Imperial";
+import ManEating from "./assets/images/image-man-eating.webp";
+import Eating from "./assets/images/icon-eating.svg";
+import Exercising from "./assets/images/icon-exercise.svg";
+import Sleep from "./assets/images/icon-sleep.svg";
+import Gender from "./assets/images/icon-gender.svg";
+import Age from "./assets/images/icon-age.svg";
+import Muscle from "./assets/images/icon-muscle.svg";
+import Pregnancy from "./assets/images/icon-pregnancy.svg";
+import Race from "./assets/images/icon-race.svg";
 
 function App() {
   const [value, setValue] = useState("metric");
+//  const [weight, setWeight] = useState(0);
+ // const [height, setHeight] = useState(0);
+ // const [bmi, setBmi] = useState(0);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue((event.target as HTMLInputElement).value);
+    if (value === "metric") {
+     // setHeight(() => 165 / 100);
+    }
   };
 
   return (
     <Container>
-      <Box component={"header"}>
+      <Box
+        component={"header"}
+        sx={{
+          backgroundColor: "#D6E5FC",
+          backgroundSize: "",
+          /*
+          "&:before": {
+            position: "absolute",
+            content: '""',
+            left: 0,
+            top: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "red"
+          }, */
+        }}
+      >
         <a href="/">
           <img className="logo" src={Logo} alt="Bmi" />
         </a>
@@ -87,72 +119,120 @@ function App() {
           </Grid>
         </Grid>
       </Box>
-      <Box component={"main"}></Box>
+      <Box component={"main"}>
+        <Paper elevation={3}>
+          <img src={ManEating} alt="man eating with sticks" />
+          <Box>
+            <Typography variant="body1">
+              {" "}
+              A BMI range of 18.5 to 24.9 is considered a 'healthy weight.'
+              Maintaining a healthy weight may lower your chances of
+              experiencing health issues later on, such as obesity and type 2
+              diabetes. Aim for a nutritious diet with reduced fat and sugar
+              content, incorporating ample fruits and vegetables. Additionally,
+              strive for regular physical activity, ideally about 30 minutes
+              daily for five days a week.
+            </Typography>
+          </Box>
+        </Paper>
+        <Grid container spacing={4}>
+          <Grid item>
+            <img src={Eating} alt="" />
+            <Typography variant="h2"> Healthy eating</Typography>
+            <Typography variant="body1">
+              {" "}
+              Healthy eating promotes weight control, disease prevention, better
+              digestion, immunity, mental clarity, and mood.
+            </Typography>
+          </Grid>
+          <Grid item>
+            <img src={Exercising} alt="" />
+            <Typography variant="h2">Regular exercise</Typography>
+            <Typography variant="body1">
+              Exercise improves fitness, aids weight control, elevates mood, and
+              reduces disease risk, fostering wellness and longevity.
+            </Typography>
+          </Grid>
+          <Grid item>
+            <img src={Sleep} alt="" />
+            <Typography variant="h2">Adequate sleep </Typography>
+            <Typography variant="body1">
+              {" "}
+              Sleep enhances mental clarity, emotional stability, and physical
+              wellness, promoting overall restoration and rejuvenation.
+            </Typography>
+          </Grid>
+        </Grid>
+        <Container>
+          <Box>
+            <Typography variant="h2">Limitations of BMI</Typography>
+            <Typography>
+              Although BMI is often a practical indicator of healthy weight, it
+              is not suited for every person. Specific groups should carefully
+              consider their BMI outcomes, and in certain cases, the measurement
+              may not be beneficial to use.
+            </Typography>
+          </Box>
+          <Grid container>
+            <Grid item>
+              <Paper elevation={3}>
+                <img src={Gender} alt="" />
+                <Typography variant="h3"> Gender</Typography>
+                <Typography variant="body1">
+                  The development and body fat composition of girls and boys
+                  vary with age. Consequently, a child's age and gender are
+                  considered when evaluating their BMI.
+                </Typography>
+              </Paper>
+            </Grid>
+            <Grid item>
+              <Paper elevation={3}>
+                <img src={Age} alt="" />
+                <Typography variant="h3">Age </Typography>
+                <Typography variant="body1">
+                  In aging individuals, increased body fat and muscle loss may
+                  cause BMI to underestimate body fat content.
+                </Typography>
+              </Paper>
+            </Grid>
+            <Grid item>
+              <Paper elevation={3}>
+                <img src={Muscle} alt="" />
+                <Typography variant="h3">Muscle</Typography>
+                <Typography variant="body1">
+                  {" "}
+                  BMI may misclassify muscular individuals as overweight or
+                  obese, as it doesn't differentiate muscle from fat.
+                </Typography>
+              </Paper>
+            </Grid>
+            <Grid item>
+              <Paper elevation={3}>
+                <img src={Pregnancy} alt="" />
+                <Typography variant="h3">Pregnancy</Typography>
+                <Typography variant="body1">
+                  Expectant mothers experience weight gain due to their growing
+                  baby. Maintaining a healthy pre-pregnancy BMI is advisable to
+                  minimise health risks for both mother and child.
+                </Typography>
+              </Paper>
+            </Grid>
+            <Grid item>
+              <Paper elevation={3}>
+                <img src={Race} alt="" />
+                <Typography variant="h3"> Race </Typography>
+                <Typography variant="body1">
+                  Certain health concerns may affect individuals of some Black
+                  and Asian origins at lower BMIs than others. To learn more, it
+                  is advised to discuss this with your GP or practice nurse.
+                </Typography>
+              </Paper>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
     </Container>
   );
 }
 
 export default App;
-
-/* 
-	
-			 A BMI
-			range of 18.5 to 24.9 is considered a 'healthy weight.' Maintaining
-			a healthy weight may lower your chances of experiencing health
-			issues later on, such as obesity and type 2 diabetes. Aim for a
-			nutritious diet with reduced fat and sugar content, incorporating
-			ample fruits and vegetables. Additionally, strive for regular
-			physical activity, ideally about 30 minutes daily for five days a
-			week. Healthy eating Healthy eating promotes weight control, disease
-			prevention, better digestion, immunity, mental clarity, and mood.
-			Regular exercise Exercise improves fitness, aids weight control,
-			elevates mood, and reduces disease risk, fostering wellness and
-			longevity. Adequate sleep Sleep enhances mental clarity, emotional
-			stability, and physical wellness, promoting overall restoration and
-			rejuvenation. Limitations of BMI Although BMI is often a practical
-			indicator of healthy weight, it is not suited for every person.
-			Specific groups should carefully consider their BMI outcomes, and in
-			certain cases, the measurement may not be beneficial to use. Gender
-			The development and body fat composition of girls and boys vary with
-			age. Consequently, a child's age and gender are considered when
-			evaluating their BMI. Age In aging individuals, increased body fat
-			and muscle loss may cause BMI to underestimate body fat content.
-			Muscle BMI may misclassify muscular individuals as overweight or
-			obese, as it doesn't differentiate muscle from fat. Pregnancy
-			Expectant mothers experience weight gain due to their growing baby.
-			Maintaining a healthy pre-pregnancy BMI is advisable to minimise
-			health risks for both mother and child. Race Certain health concerns
-			may affect individuals of some Black and Asian origins at lower BMIs
-			than others. To learn more, it is advised to discuss this with your
-			GP or practice nurse.
-
-        {value === "imperial" && (
-                    <FormControl fullWidth variant="filled">
-                      <TextField
-                        label="height"
-                        variant={"outlined"}
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="end">in</InputAdornment>
-                          ),
-                        }}
-                      />
-                    </FormControl>
-                  )}
-
-
-    {value === "imperial" && (
-                    <FormControl fullWidth variant="filled">
-                      <TextField
-                        label="weight"
-                        variant={"outlined"}
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="end">lbs</InputAdornment>
-                          ),
-                        }}
-                      />
-                    </FormControl>
-                  )}
-
-*/

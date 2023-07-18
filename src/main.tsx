@@ -8,8 +8,15 @@ import "./index.css";
 const theme = createTheme({
   typography: {
     fontFamily: ["Inter", "sans-serif"].join(","),
+    h1: {
+      fontSize: "5rem",
+    },
   },
 });
+
+theme.typography.h1 = {
+  fontSize: "4rem",
+};
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
