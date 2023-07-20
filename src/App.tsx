@@ -25,6 +25,7 @@ import Age from "./assets/images/icon-age.svg";
 import Muscle from "./assets/images/icon-muscle.svg";
 import Pregnancy from "./assets/images/icon-pregnancy.svg";
 import Race from "./assets/images/icon-race.svg";
+import BmiPractices from "./components/BmiPractices";
 
 function App() {
   const [value, setValue] = useState("metric");
@@ -44,7 +45,12 @@ function App() {
       {/* HEADER START */}
       <Box component={"header"}>
         <Grid container justifyContent={"center"} alignItems={"center"}>
-          <Grid item component={"a"} href="/">
+          <Grid
+            item
+            component={"a"}
+            href="/"
+            sx={{ position: "relative", zIndex: 3 }}
+          >
             <img className="logo" src={Logo} alt="Bmi" />
           </Grid>
         </Grid>
@@ -53,7 +59,7 @@ function App() {
           <Grid
             item
             xs={12}
-            sm={6}
+            md={6}
             sx={{
               zIndex: 2,
               "&::before": {
@@ -65,7 +71,10 @@ function App() {
                   xs: "100%",
                   md: "65%",
                 },
-                height: "100%",
+                height: {
+                  xs: "100%",
+                  md: "75%",
+                },
                 // backgroundColor: "#D6E5FC",
                 zIndex: -1,
                 borderRadius: "0px 0px 35px 35px",
@@ -104,7 +113,7 @@ function App() {
           <Grid
             item
             xs={12}
-            sm={6}
+            md={6}
             sx={{
               zIndex: 2,
             }}
@@ -188,15 +197,24 @@ function App() {
       {/* HEADER END */}
       {/* MAIN START */}
       <Box component={"main"}>
-        <Paper elevation={0}>
-          <img src={ManEating} alt="man eating with sticks" />
-          <Box>
+        <Grid
+          container
+          sx={{ paddingBlock: "2rem" }}
+          justifyContent={"center"}
+          alignItems={"center"}
+        >
+          <Grid item sm={6}>
+            <img src={ManEating} alt="man eating with sticks" />
+          </Grid>
+
+          <Grid item sm={6}>
             <Typography
               variant="h2"
               gutterBottom
               sx={{
                 fontSize: "2rem",
                 fontWeight: 600,
+                paddingBlock: "2rem",
               }}
             >
               What does your BMI result mean?
@@ -211,35 +229,30 @@ function App() {
               strive for regular physical activity, ideally about 30 minutes
               daily for five days a week.
             </Typography>
-          </Box>
-        </Paper>
+          </Grid>
+        </Grid>
         <Grid container spacing={4}>
-          <Grid item>
-            <img src={Eating} alt="" />
-            <Typography variant="h3"> Healthy eating</Typography>
-            <Typography variant="body1">
-              {" "}
-              Healthy eating promotes weight control, disease prevention, better
-              digestion, immunity, mental clarity, and mood.
-            </Typography>
-          </Grid>
-          <Grid item>
-            <img src={Exercising} alt="" />
-            <Typography variant="h3">Regular exercise</Typography>
-            <Typography variant="body1">
-              Exercise improves fitness, aids weight control, elevates mood, and
-              reduces disease risk, fostering wellness and longevity.
-            </Typography>
-          </Grid>
-          <Grid item>
-            <img src={Sleep} alt="" />
-            <Typography variant="h3">Adequate sleep </Typography>
-            <Typography variant="body1">
-              {" "}
-              Sleep enhances mental clarity, emotional stability, and physical
-              wellness, promoting overall restoration and rejuvenation.
-            </Typography>
-          </Grid>
+          <BmiPractices
+            value={4}
+            img={Eating}
+            heading="Healthy eating"
+            content=" Healthy eating promotes weight control, disease prevention, better
+              digestion, immunity, mental clarity, and mood."
+          />
+          <BmiPractices
+            value={4}
+            img={Exercising}
+            heading="Regular exercise"
+            content="Exercise improves fitness, aids weight control, elevates mood, and
+              reduces disease risk, fostering wellness and longevity."
+          />
+          <BmiPractices
+            value={4}
+            img={Sleep}
+            heading="Adequate sleep"
+            content=" Sleep enhances mental clarity, emotional stability, and physical
+              wellness, promoting overall restoration and rejuvenation."
+          />
         </Grid>
 
         <Grid container>
