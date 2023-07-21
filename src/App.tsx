@@ -6,8 +6,7 @@ import {
   FormControl,
   FormControlLabel,
   FormLabel,
-  Grid,
-  Paper,
+  Grid, 
   Radio,
   RadioGroup,
   Typography,
@@ -186,10 +185,11 @@ function App() {
                   }}
                 >
                   Your BMI is...
+                  <Typography component="span">22.0</Typography>
                 </Typography>
                 <Typography variant="body1" gutterBottom>
-                  Your BMI suggests you're Your ideal weight is between What
-                  your BMI result means
+                  Your BMI suggests you're a healthy weight. Your ideal weight
+                  is between 9st 6lbs - 12st 10lbs.
                 </Typography>
               </Box>
             </Box>
