@@ -13,6 +13,7 @@ import {
   Typography,
 } from "@mui/material";
 // import { css } from "@emotion/react";
+import RightPattern from "./assets/images/pattern-curved-line-right.svg";
 import Logo from "./assets/images/logo.svg";
 import Metric from "./components/Metric";
 import Imperial from "./components/Imperial";
@@ -26,6 +27,7 @@ import Muscle from "./assets/images/icon-muscle.svg";
 import Pregnancy from "./assets/images/icon-pregnancy.svg";
 import Race from "./assets/images/icon-race.svg";
 import BmiPractices from "./components/BmiPractices";
+import BmiLimitations from "./components/BmiLimitations";
 
 function App() {
   const [value, setValue] = useState("metric");
@@ -197,12 +199,7 @@ function App() {
       {/* HEADER END */}
       {/* MAIN START */}
       <Box component={"main"}>
-        <Grid
-          container
-          sx={{ paddingBlock: "2rem" }}
-          justifyContent={"center"}
-          alignItems={"center"}
-        >
+        <Grid container justifyContent={"center"} alignItems={"center"}>
           <Grid item sm={6}>
             <img src={ManEating} alt="man eating with sticks" />
           </Grid>
@@ -255,8 +252,14 @@ function App() {
           />
         </Grid>
 
-        <Grid container>
-          <Grid item>
+        <Grid
+          container
+          spacing={2}
+          justifyContent={"center"}
+          width={"100%"}
+          margin={"auto"}
+        >
+          <Grid item xs={12} md={7}>
             <Typography variant="h2">Limitations of BMI</Typography>
             <Typography>
               Although BMI is often a practical indicator of healthy weight, it
@@ -265,62 +268,55 @@ function App() {
               may not be beneficial to use.
             </Typography>
           </Grid>
-          <Grid container>
-            <Grid item>
-              <Paper elevation={3}>
-                <img src={Gender} alt="" />
-                <Typography variant="h3"> Gender</Typography>
-                <Typography variant="body1">
-                  The development and body fat composition of girls and boys
-                  vary with age. Consequently, a child's age and gender are
-                  considered when evaluating their BMI.
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item>
-              <Paper elevation={3}>
-                <img src={Age} alt="" />
-                <Typography variant="h3">Age </Typography>
-                <Typography variant="body1">
-                  In aging individuals, increased body fat and muscle loss may
-                  cause BMI to underestimate body fat content.
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item>
-              <Paper elevation={3}>
-                <img src={Muscle} alt="" />
-                <Typography variant="h3">Muscle</Typography>
-                <Typography variant="body1">
-                  {" "}
-                  BMI may misclassify muscular individuals as overweight or
-                  obese, as it doesn't differentiate muscle from fat.
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item>
-              <Paper elevation={3}>
-                <img src={Pregnancy} alt="" />
-                <Typography variant="h3">Pregnancy</Typography>
-                <Typography variant="body1">
-                  Expectant mothers experience weight gain due to their growing
-                  baby. Maintaining a healthy pre-pregnancy BMI is advisable to
-                  minimise health risks for both mother and child.
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item>
-              <Paper elevation={3}>
-                <img src={Race} alt="" />
-                <Typography variant="h3"> Race </Typography>
-                <Typography variant="body1">
-                  Certain health concerns may affect individuals of some Black
-                  and Asian origins at lower BMIs than others. To learn more, it
-                  is advised to discuss this with your GP or practice nurse.
-                </Typography>
-              </Paper>
-            </Grid>
+          <BmiLimitations
+            img={Gender}
+            title="Gender"
+            content="The development and body fat composition of girls and boys vary
+                with age. Consequently, a child's age and gender are considered
+                when evaluating their BMI."
+          />
+          <Grid
+            item
+            md={4}
+            justifyContent={"center"}
+            alignItems={"center"}
+            sx={{
+              display: {
+                xs: "none",
+                md: "flex",
+              },
+            }}
+          >
+            <img src={RightPattern} alt="" />
           </Grid>
+          <BmiLimitations
+            content="In aging individuals, increased body fat and muscle loss may
+                cause BMI to underestimate body fat content."
+            title="Age"
+            img={Age}
+          />
+          <BmiLimitations
+            content="BMI may misclassify muscular individuals as overweight or obese,
+                as it doesn't differentiate muscle from fat."
+            title="Muscle"
+            img={Muscle}
+          />
+
+          <BmiLimitations
+            content="Expectant mothers experience weight gain due to their growing
+                baby. Maintaining a healthy pre-pregnancy BMI is advisable to
+                minimise health risks for both mother and child."
+            title="Pregnancy"
+            img={Pregnancy}
+          />
+
+          <BmiLimitations
+            content="Certain health concerns may affect individuals of some Black and
+                Asian origins at lower BMIs than others. To learn more, it is
+                advised to discuss this with your GP or practice nurse."
+            title="Race"
+            img={Race}
+          />
         </Grid>
       </Box>
       {/* MAIN END */}
