@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useTheme } from "@mui/material/styles";
+
 import "./App.css";
 import {
   Box,
@@ -13,7 +15,6 @@ import {
 } from "@mui/material";
 // import { css } from "@emotion/react";
 import RightPattern from "./assets/images/pattern-curved-line-right.svg";
-import Logo from "./assets/images/logo.svg";
 import Metric from "./components/Metric";
 import Imperial from "./components/Imperial";
 import ManEating from "./assets/images/image-man-eating.webp";
@@ -27,12 +28,18 @@ import Pregnancy from "./assets/images/icon-pregnancy.svg";
 import Race from "./assets/images/icon-race.svg";
 import BmiPractices from "./components/BmiPractices";
 import BmiLimitations from "./components/BmiLimitations";
+import Header from "./components/Header";
 
 function App() {
   const [value, setValue] = useState("metric");
   //  const [weight, setWeight] = useState(0);
   // const [height, setHeight] = useState(0);
   // const [bmi, setBmi] = useState(0);
+
+  const theme = useTheme();
+  const { status } = theme;
+  const { pureWhite, gunMetal, darkElectricBlue } = status;
+  console.log(status);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue((event.target as HTMLInputElement).value);
@@ -41,75 +48,61 @@ function App() {
     }
   };
 
+  const bgLayout = {
+    zIndex: 2,
+    "&::before": {
+      position: "absolute",
+      content: '""',
+      top: 0,
+      left: 0,
+      borderBottom: {
+        xs: "1px solid black",
+        sm: "none",
+      },
+      width: {
+        xs: "100%",
+        md: "65%",
+      },
+      height: {
+        xs: "100%",
+        md: "100%",
+      },
+
+      zIndex: -1,
+      borderRadius: "0px 0px 35px 35px",
+      background:
+        "linear-gradient(315deg, #D6E5FC 0%, rgba(214, 252, 254, 0.00) 100%)",
+    },
+  };
+
   return (
-    <Container sx={{ paddingInline: "1.5rem" }}>
-      {/* HEADER START */}
-      <Box component={"header"}>
-        <Grid container justifyContent={{
-          xs: "center",
-          md: "flex-start",
-        }} alignItems={"center"}>
-          <Grid
-            item
-            component={"a"}
-            href="/"
-            sx={{ position: "relative", zIndex: 3 }}
-          >
-            <img className="logo" src={Logo} alt="Bmi" />
-          </Grid>
-        </Grid>
-      </Box>
-      {/* HEADER END */}
+    <Container sx={{ paddingInline: "1.5rem", paddingBlockEnd: "2.5rem" }}>
+      <Header />
+
       {/* MAIN START */}
       <Box component={"main"}>
         <Grid container justifyContent={"center"} alignItems={"center"}>
-          <Grid
-            item
-            xs={12}
-            md={6}
-            sx={{
-              zIndex: 2,
-              "&::before": {
-                position: "absolute",
-                content: '""',
-                top: 0,
-                left: 0,
-                borderBottom: {
-                  xs: "1px solid black",
-                  sm: "none",
-                },
-                width: {
-                  xs: "100%",
-                  md: "65%",
-                },
-                height: {
-                  xs: "100%",
-                  md: "100%",
-                },
-                // backgroundColor: "#D6E5FC",
-                zIndex: -1,
-                borderRadius: "0px 0px 35px 35px",
-                // border: "1px solid #000",
-                background:
-                  "linear-gradient(315deg, #D6E5FC 0%, rgba(214, 252, 254, 0.00) 100%)",
-              },
-            }}
-          >
+          <Grid item xs={12} md={6} sx={bgLayout}>
             <Typography
               variant="h1"
               gutterBottom
               fontSize={"3rem"}
               fontWeight={600}
               lineHeight={1.1}
-              color={"hsla(215, 31%, 21%, 1)"}
+              color={gunMetal}
+              textAlign={{
+                md: "start",
+              }}
             >
               Body Mass Index Calculator
             </Typography>
             <Typography
               variant="body1"
               lineHeight={1.5}
-              color={"hsla(215, 17%, 44%, 1)"}
-              gutterBottom
+              color={darkElectricBlue}
+              textAlign={{
+                md: "start",
+              }}
             >
               Better understand your weight in relation to your height using our
               body mass index (BM) calculator. While BMI is not the sole
@@ -117,6 +110,8 @@ function App() {
               point to evaluate your overall health and well-being.
             </Typography>
           </Grid>
+
+          {/* FORM WEIGHT AND HEIGHT RADIOS */}
           <Grid
             item
             xs={12}
@@ -143,7 +138,7 @@ function App() {
                   sx={{
                     fontSize: "1.5rem",
                     fontWeight: 600,
-                    color: "hsla(215, 31%, 21%, 1)",
+                    color: {gunMetal},
                   }}
                 >
                   Enter your details below
@@ -159,6 +154,7 @@ function App() {
                     marginBlock: "1rem",
                   }}
                 >
+                  {/* METRIC RADIO BUTTON */}
                   <FormControlLabel
                     sx={{
                       flex: "1 1",
@@ -170,6 +166,7 @@ function App() {
                     control={<Radio />}
                     label="Metric"
                   />
+                  {/*IMPERIAL RADIO BUTTON */}
                   <FormControlLabel
                     sx={{
                       flex: "1 1",
@@ -183,7 +180,10 @@ function App() {
                   />
                 </RadioGroup>
               </FormControl>
+
+              {/* SELECT TEXTFIELD */}
               {value === "metric" ? <Metric /> : <Imperial />}
+
               <Box
                 borderRadius={"16px"}
                 textAlign={"left"}
@@ -199,7 +199,7 @@ function App() {
                 <Typography
                   variant="h2"
                   gutterBottom
-                  color="var(--pure-white, #FFF)"
+                  color={theme.status.pureWhite}
                   fontWeight={600}
                   fontSize={"1rem"}
                   display={"flex"}
@@ -220,7 +220,7 @@ function App() {
                 <Typography
                   variant="body1"
                   gutterBottom
-                  color="var(--pure-white, #FFF); "
+                  color={pureWhite}
                 >
                   Your BMI suggests you're a healthy weight. Your ideal weight
                   is between 9st 6lbs - 12st 10lbs.
@@ -244,14 +244,14 @@ function App() {
             <Typography
               variant="h2"
               gutterBottom
-              color={"hsla(215, 31%, 21%, 1)"}
+              color={gunMetal}
               fontSize={"2rem"}
               fontWeight={600}
               paddingY={"2rem"}
             >
               What does your BMI result mean?
             </Typography>
-            <Typography variant="body1" color={"hsla(215, 17%, 44%, 1)"}>
+            <Typography variant="body1" color={darkElectricBlue}>
               {" "}
               A BMI range of 18.5 to 24.9 is considered a 'healthy weight.'
               Maintaining a healthy weight may lower your chances of
@@ -298,14 +298,14 @@ function App() {
           <Grid item xs={12} md={7} paddingY={"2.5rem"} paddingTop={0}>
             <Typography
               variant="h2"
-              color={"hsla(215, 31%, 21%, 1)"}
+              color={gunMetal}
               fontSize={"2rem"}
               fontWeight={600}
               gutterBottom
             >
               Limitations of BMI
             </Typography>
-            <Typography color={"hsla(215, 17%, 44%, 1)"}>
+            <Typography color={darkElectricBlue}>
               Although BMI is often a practical indicator of healthy weight, it
               is not suited for every person. Specific groups should carefully
               consider their BMI outcomes, and in certain cases, the measurement

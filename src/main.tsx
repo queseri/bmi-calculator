@@ -6,6 +6,19 @@ import App from "./App.tsx";
 import "./index.css";
 
 const theme = createTheme({
+  status: {
+    pureWhite: "hsla(0, 0%, 100%, 1)",
+    lightGrey: "hsla(200, 24%, 88%, 1)",
+    gunMetal: "hsla(215, 31%, 21%, 1)",
+    darkElectricBlue: "hsla(215, 17%, 44%, 1)",
+    blue: "hsla(227, 92%, 58%, 1)",
+  },
+  palette: {
+    // primary: {
+    // light: "hsla(215, 31%, 21%, 1)",
+    //  main: "hsla(0, 0,100%, 1)",
+    //  },
+  },
   typography: {
     fontFamily: ["Inter", "sans-serif"].join(","),
     h1: {

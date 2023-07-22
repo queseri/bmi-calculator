@@ -10,18 +10,17 @@ function BmiLimitations(props: {
       item
       sm={6}
       md={4}
-      padding={"1rem"}     
+      padding={"1rem"}
       sx={{
         "&:last-child": {
           justifySelf: "center",
-          paddingBlock: "2rem",
         },
         "&:nth-last-child(2)": {
           justifySelf: "center",
         },
       }}
     >
-      <Paper elevation={3} sx={{ padding: "1rem" }}>
+      <Paper elevation={3} sx={{ padding: "1rem", height: "100%" }}>
         <Box
           display={"flex"}
           justifyContent={"flex-start"}

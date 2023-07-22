@@ -2,6 +2,8 @@
   font-family: 'Inter', sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  --gunmetal:  hsla(215, 31%, 21%, 1)
+
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
