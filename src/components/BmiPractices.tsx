@@ -24,10 +24,21 @@ function BmiPractices(props: {
     >
       <img src={props.img} alt="" />
       <Box>
-        <Typography variant="h3" sx={{ textAlign: "left" }}>
+        <Typography
+          variant="h3"
+          color={"hsla(215, 31%, 21%, 1)"}
+          textAlign={"left"}
+          fontSize={"1.5rem"}
+          fontWeight={600}
+        >
           {props.heading}
         </Typography>
-        <Typography variant="body1" sx={{ textAlign: "left" }}>
+        <Typography
+          variant="body1"
+          textAlign={"left"}
+          paddingY={"1.5rem"}
+          color={"hsla(215, 17%, 44%, 1)"}
+        >
           {props.content}
         </Typography>
       </Box>

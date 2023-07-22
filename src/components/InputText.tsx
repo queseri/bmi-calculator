@@ -1,11 +1,11 @@
 import { FormControl, InputAdornment, TextField } from "@mui/material";
 
 function InputText(props: { measure: string, label: string }) {
-  function onChange(evt: { target: { value: any; }; }) {
+  function onChange(evt: { target: { value: string; }; }) {
     console.log(evt.target.value);
   }
   return (
-    <FormControl fullWidth variant="filled">
+    <FormControl fullWidth variant="filled" >
       <TextField
         label={props.label}
         variant={"outlined"}

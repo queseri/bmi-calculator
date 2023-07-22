@@ -10,16 +10,14 @@ function BmiLimitations(props: {
       item
       sm={6}
       md={4}
-      padding={"1rem"}
+      padding={"1rem"}     
       sx={{
         "&:last-child": {
           justifySelf: "center",
           paddingBlock: "2rem",
-        //  margin: "auto",
         },
         "&:nth-last-child(2)": {
           justifySelf: "center",
-        //  margin: "auto",
         },
       }}
     >
@@ -29,6 +27,7 @@ function BmiLimitations(props: {
           justifyContent={"flex-start"}
           fontWeight={600}
           alignItems={"center"}
+          gap={"1rem"}
         >
           <img src={props.img} alt="" />
           <Typography variant="h3" fontSize={"1.25rem"}>
@@ -36,7 +35,7 @@ function BmiLimitations(props: {
             {props.title}
           </Typography>
         </Box>
-        <Typography variant="body1" textAlign={"left"}>
+        <Typography variant="body1" textAlign={"left"} marginY={"1.5rem"}>
           {props.content}
         </Typography>
       </Paper>

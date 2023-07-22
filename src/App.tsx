@@ -6,7 +6,7 @@ import {
   FormControl,
   FormControlLabel,
   FormLabel,
-  Grid, 
+  Grid,
   Radio,
   RadioGroup,
   Typography,
@@ -42,10 +42,13 @@ function App() {
   };
 
   return (
-    <Container>
+    <Container sx={{ paddingInline: "1.5rem" }}>
       {/* HEADER START */}
       <Box component={"header"}>
-        <Grid container justifyContent={"center"} alignItems={"center"}>
+        <Grid container justifyContent={{
+          xs: "center",
+          md: "flex-start",
+        }} alignItems={"center"}>
           <Grid
             item
             component={"a"}
@@ -55,7 +58,10 @@ function App() {
             <img className="logo" src={Logo} alt="Bmi" />
           </Grid>
         </Grid>
-
+      </Box>
+      {/* HEADER END */}
+      {/* MAIN START */}
+      <Box component={"main"}>
         <Grid container justifyContent={"center"} alignItems={"center"}>
           <Grid
             item
@@ -68,13 +74,17 @@ function App() {
                 content: '""',
                 top: 0,
                 left: 0,
+                borderBottom: {
+                  xs: "1px solid black",
+                  sm: "none",
+                },
                 width: {
                   xs: "100%",
                   md: "65%",
                 },
                 height: {
                   xs: "100%",
-                  md: "75%",
+                  md: "100%",
                 },
                 // backgroundColor: "#D6E5FC",
                 zIndex: -1,
@@ -88,22 +98,18 @@ function App() {
             <Typography
               variant="h1"
               gutterBottom
-              sx={{
-                fontSize: "3rem",
-                color: "hsla(215, 31%, 21%, 1)",
-                fontWeight: 600,
-                lineHeight: 1.1,
-              }}
+              fontSize={"3rem"}
+              fontWeight={600}
+              lineHeight={1.1}
+              color={"hsla(215, 31%, 21%, 1)"}
             >
               Body Mass Index Calculator
             </Typography>
             <Typography
               variant="body1"
+              lineHeight={1.5}
+              color={"hsla(215, 17%, 44%, 1)"}
               gutterBottom
-              sx={{
-                color: "hsla(215, 17%, 44%, 1)",
-                lineHeight: 1.5,
-              }}
             >
               Better understand your weight in relation to your height using our
               body mass index (BM) calculator. While BMI is not the sole
@@ -122,12 +128,12 @@ function App() {
             <Box
               component={"form"}
               noValidate
+              borderRadius={"16px"}
+              margin={"24px auto"}
+              padding={"16px"}
+              boxShadow={"16px 32px 56px 0px rgba(143, 174, 207, 0.25)"}
               sx={{
-                borderRadius: "16px",
                 background: "#FFF",
-                margin: "24px auto",
-                padding: "16px",
-                boxShadow: "16px 32px 56px 0px rgba(143, 174, 207, 0.25)",
               }}
             >
               <FormControl fullWidth>
@@ -149,6 +155,9 @@ function App() {
                   value={value}
                   onChange={handleChange}
                   name="measurement-group"
+                  sx={{
+                    marginBlock: "1rem",
+                  }}
                 >
                   <FormControlLabel
                     sx={{
@@ -175,19 +184,44 @@ function App() {
                 </RadioGroup>
               </FormControl>
               {value === "metric" ? <Metric /> : <Imperial />}
-              <Box>
+              <Box
+                borderRadius={"16px"}
+                textAlign={"left"}
+                paddingX={"2rem"}
+                paddingY={"1rem"}
+                marginBottom={"2rem"}
+                marginTop={"2rem"}
+                sx={{
+                  background:
+                    "linear-gradient(90deg, #345FF6 0%, #587DFF 100%)",
+                }}
+              >
                 <Typography
                   variant="h2"
                   gutterBottom
-                  sx={{
-                    fontSize: "2rem",
-                    fontWeight: 600,
-                  }}
+                  color="var(--pure-white, #FFF)"
+                  fontWeight={600}
+                  fontSize={"1rem"}
+                  display={"flex"}
+                  flexDirection={"column"}
                 >
                   Your BMI is...
-                  <Typography component="span">22.0</Typography>
+                  <Typography
+                    component="span"
+                    fontSize={"3rem"}
+                    lineHeight={1.1}
+                    fontWeight={600}
+                    paddingBottom={".5rem"}
+                    paddingTop={".5rem"}
+                  >
+                    22.0
+                  </Typography>
                 </Typography>
-                <Typography variant="body1" gutterBottom>
+                <Typography
+                  variant="body1"
+                  gutterBottom
+                  color="var(--pure-white, #FFF); "
+                >
                   Your BMI suggests you're a healthy weight. Your ideal weight
                   is between 9st 6lbs - 12st 10lbs.
                 </Typography>
@@ -195,11 +229,13 @@ function App() {
             </Box>
           </Grid>
         </Grid>
-      </Box>
-      {/* HEADER END */}
-      {/* MAIN START */}
-      <Box component={"main"}>
-        <Grid container justifyContent={"center"} alignItems={"center"}>
+
+        <Grid
+          container
+          justifyContent={"center"}
+          alignItems={"center"}
+          paddingY={"2.5rem"}
+        >
           <Grid item sm={6}>
             <img src={ManEating} alt="man eating with sticks" />
           </Grid>
@@ -208,15 +244,14 @@ function App() {
             <Typography
               variant="h2"
               gutterBottom
-              sx={{
-                fontSize: "2rem",
-                fontWeight: 600,
-                paddingBlock: "2rem",
-              }}
+              color={"hsla(215, 31%, 21%, 1)"}
+              fontSize={"2rem"}
+              fontWeight={600}
+              paddingY={"2rem"}
             >
               What does your BMI result mean?
             </Typography>
-            <Typography variant="body1">
+            <Typography variant="body1" color={"hsla(215, 17%, 44%, 1)"}>
               {" "}
               A BMI range of 18.5 to 24.9 is considered a 'healthy weight.'
               Maintaining a healthy weight may lower your chances of
@@ -256,12 +291,21 @@ function App() {
           container
           spacing={2}
           justifyContent={"center"}
+          alignItems={"stretch"}
           width={"100%"}
           margin={"auto"}
         >
-          <Grid item xs={12} md={7}>
-            <Typography variant="h2">Limitations of BMI</Typography>
-            <Typography>
+          <Grid item xs={12} md={7} paddingY={"2.5rem"} paddingTop={0}>
+            <Typography
+              variant="h2"
+              color={"hsla(215, 31%, 21%, 1)"}
+              fontSize={"2rem"}
+              fontWeight={600}
+              gutterBottom
+            >
+              Limitations of BMI
+            </Typography>
+            <Typography color={"hsla(215, 17%, 44%, 1)"}>
               Although BMI is often a practical indicator of healthy weight, it
               is not suited for every person. Specific groups should carefully
               consider their BMI outcomes, and in certain cases, the measurement
