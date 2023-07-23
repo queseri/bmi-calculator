@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 
 import "./App.css";
@@ -31,23 +31,40 @@ import BmiLimitations from "./components/BmiLimitations";
 import Header from "./components/Header";
 
 function App() {
-  const [value, setValue] = useState("metric");
-  //  const [weight, setWeight] = useState(0);
-  // const [height, setHeight] = useState(0);
-  // const [bmi, setBmi] = useState(0);
+  const [method, setMethod] = useState("metric");
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const getMetricTotal = JSON.parse(localStorage.getItem("metric")!);
+  const [bmiMetric, setBmiMetric] = useState(
+    getMetricTotal !== null && getMetricTotal.total !== null ? getMetricTotal.total : 0
+  );
+  const [message, setMessage] = useState("");
+  console.log(getMetricTotal);
+  /* const [weightKg, setWeightKg] = useState(0);
+   const [heightCm, setHeightCm] = useState(0);
+    */
 
   const theme = useTheme();
   const { status } = theme;
   const { pureWhite, gunMetal, darkElectricBlue } = status;
-  console.log(status);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue((event.target as HTMLInputElement).value);
-    if (value === "metric") {
-      // setHeight(() => 165 / 100);
-    }
+  const handleChangeMethod = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setMethod((event.target as HTMLInputElement).value);
   };
+  
+ 
+useEffect(() => {
+  if (bmiMetric < 18.5) {
+    setMessage("Underweight");
+  } else if (bmiMetric >= 18.5 && bmiMetric < 24.9) {
+    setMessage(" Healthy weight");
+  } else if (bmiMetric >= 24.9 && bmiMetric < 29.9) {
+    setMessage("Overweight");
+  } else {
+    setMessage("Obese");
+  }
+},[bmiMetric])
 
+console.log(bmiMetric)
   const bgLayout = {
     zIndex: 2,
     "&::before": {
@@ -138,7 +155,7 @@ function App() {
                   sx={{
                     fontSize: "1.5rem",
                     fontWeight: 600,
-                    color: {gunMetal},
+                    color: { gunMetal },
                   }}
                 >
                   Enter your details below
@@ -146,9 +163,9 @@ function App() {
                 <RadioGroup
                   row
                   aria-labelledby="measurement"
-                  defaultValue={value}
-                  value={value}
-                  onChange={handleChange}
+                  defaultValue={method}
+                  value={method}
+                  onChange={handleChangeMethod}
                   name="measurement-group"
                   sx={{
                     marginBlock: "1rem",
@@ -182,7 +199,11 @@ function App() {
               </FormControl>
 
               {/* SELECT TEXTFIELD */}
-              {value === "metric" ? <Metric /> : <Imperial />}
+              {method === "metric" ? (
+                <Metric bmi={bmiMetric !== null ? bmiMetric : 0} setBmi={setBmiMetric} />
+              ) : (
+                <Imperial />
+              )}
 
               <Box
                 borderRadius={"16px"}
@@ -194,6 +215,13 @@ function App() {
                 sx={{
                   background:
                     "linear-gradient(90deg, #345FF6 0%, #587DFF 100%)",
+
+                  borderBottomRightRadius: {
+                    sm: "100px",
+                  },
+                  borderTopRightRadius: {
+                    sm: "100px",
+                  },
                 }}
               >
                 <Typography
@@ -214,16 +242,12 @@ function App() {
                     paddingBottom={".5rem"}
                     paddingTop={".5rem"}
                   >
-                    22.0
+                   {bmiMetric !== null ? bmiMetric.toString() : "0"} 
                   </Typography>
                 </Typography>
-                <Typography
-                  variant="body1"
-                  gutterBottom
-                  color={pureWhite}
-                >
-                  Your BMI suggests you're a healthy weight. Your ideal weight
-                  is between 9st 6lbs - 12st 10lbs.
+                <Typography variant="body1" gutterBottom color={pureWhite}>
+                  Your BMI suggests you're { message }. Your ideal weight is
+                  between 9st 6lbs - 12st 10lbs.
                 </Typography>
               </Box>
             </Box>

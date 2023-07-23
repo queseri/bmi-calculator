@@ -6,20 +6,7 @@ function BmiLimitations(props: {
   img: string;
 }) {
   return (
-    <Grid
-      item
-      sm={6}
-      md={4}
-      padding={"1rem"}
-      sx={{
-        "&:last-child": {
-          justifySelf: "center",
-        },
-        "&:nth-last-child(2)": {
-          justifySelf: "center",
-        },
-      }}
-    >
+    <Grid item sm={6} md={4} padding={"1rem"}>
       <Paper elevation={3} sx={{ padding: "1rem", height: "100%" }}>
         <Box
           display={"flex"}

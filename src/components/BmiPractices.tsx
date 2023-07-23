@@ -1,4 +1,4 @@
-import { Box, Grid, GridSize, Typography } from "@mui/material";
+import { Box, Grid, GridSize, Typography, useTheme } from "@mui/material";
 
 function BmiPractices(props: {
   value: GridSize;
@@ -6,6 +6,10 @@ function BmiPractices(props: {
   heading: string;
   content: string;
 }) {
+  const theme = useTheme();
+  const { status } = theme;
+  const { gunMetal, darkElectricBlue } = status;
+
   return (
     <Grid
       item
@@ -26,7 +30,7 @@ function BmiPractices(props: {
       <Box>
         <Typography
           variant="h3"
-          color={"hsla(215, 31%, 21%, 1)"}
+          color={gunMetal}
           textAlign={"left"}
           fontSize={"1.5rem"}
           fontWeight={600}
@@ -37,7 +41,7 @@ function BmiPractices(props: {
           variant="body1"
           textAlign={"left"}
           paddingY={"1.5rem"}
-          color={"hsla(215, 17%, 44%, 1)"}
+          color={darkElectricBlue}
         >
           {props.content}
         </Typography>
