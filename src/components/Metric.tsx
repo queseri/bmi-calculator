@@ -14,7 +14,7 @@ interface Metric {
 }
 
 function Metric(props: {
-  setBmi: (arg0: () => number) => void;
+  setBmiMetric: (arg0: () => number) => void;
   setMinWeight: (arg0: () => number) => void;
   setMaxWeight: (arg0: () => number) => void;
 }) {
@@ -34,7 +34,7 @@ function Metric(props: {
       ...currentBmi,
       [name]: value,
     });
-    props.setBmi(() => total);
+   // props.setBmiMetric(() => total);
   }
 
   const { weight, height, total } = currentBmi;
@@ -47,7 +47,7 @@ function Metric(props: {
       ...currentBmi,
       total: Number(((weight / height / height) * 10000).toFixed(2)),
     });
-    props.setBmi(() => total);
+    props.setBmiMetric(() => total);
     localStorage.setItem("metric", JSON.stringify({ ...currentBmi }));
     props.setMinWeight(() => (18.5 / 10000) * height * height);
     props.setMaxWeight(() => (24.9 / 10000) * height * height);

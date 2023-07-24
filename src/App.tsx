@@ -33,6 +33,7 @@ import { bgLayout } from "./styles/Styles";
 
 function App() {
   const [method, setMethod] = useState("metric");
+
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const getMetricTotal = JSON.parse(localStorage.getItem("metric")!);
   const [bmiMetric, setBmiMetric] = useState(
@@ -40,10 +41,20 @@ function App() {
       ? getMetricTotal.total
       : 0
   );
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const getImperialTotal = JSON.parse(localStorage.getItem("imperial")!);
+  const [bmiImperial, setBmiImperial] = useState(
+    getImperialTotal !== null && getImperialTotal.total !== null
+      ? getImperialTotal.total
+      : 0
+  );
+
   const [message, setMessage] = useState("");
   const [minWeight, setMinWeight] = useState(0);
   const [maxWeight, setMaxWeight] = useState(0);
   console.log(getMetricTotal);
+  console.log(getImperialTotal);
   /* const [weightKg, setWeightKg] = useState(0);
    const [heightCm, setHeightCm] = useState(0);
     */
@@ -180,9 +191,17 @@ function App() {
 
               {/* SELECT TEXTFIELD */}
               {method === "metric" ? (
-                <Metric setBmi={setBmiMetric} setMinWeight={setMinWeight}  setMaxWeight={setMaxWeight}/>
+                <Metric
+                  setBmiMetric={setBmiMetric}
+                  setMinWeight={setMinWeight}
+                  setMaxWeight={setMaxWeight}
+                />
               ) : (
-                <Imperial />
+                <Imperial
+                  setBmiImperial={setBmiImperial}
+                  setMinWeight={setMinWeight}
+                  setMaxWeight={setMaxWeight}
+                />
               )}
 
               <Box
@@ -222,13 +241,30 @@ function App() {
                     paddingBottom={".5rem"}
                     paddingTop={".5rem"}
                   >
-                    {isNaN(bmiMetric) ? "0" : bmiMetric.toString()}
+                    {method === "metric"
+                      ? isNaN(bmiMetric)
+                        ? "0"
+                        : bmiMetric.toString()
+                      : isNaN(bmiImperial)
+                      ? "0"
+                      : bmiImperial.toString()}
                   </Typography>
                 </Typography>
-                <Typography variant="body1" gutterBottom color={pureWhite}>
-                  Your BMI suggests you're {message}. Your ideal weight is
-                  between {minWeight.toFixed(2)} kgs - {maxWeight.toFixed(2)}.
-                </Typography>
+                {method === "metric" ? (
+                  <Typography variant="body1" gutterBottom color={pureWhite}>
+                    Your BMI suggests you're {message}. Your ideal weight is
+                    between {minWeight.toFixed(2)} kgs - {maxWeight.toFixed(2)}{" "}
+                    kgs.
+                  </Typography>
+                ) : (
+                  <Typography variant="body1" gutterBottom color={pureWhite}>
+                    Your BMI suggests you're {message}. Your ideal weight is
+                    between {Math.floor(minWeight / 14)}st {" "}
+                    {Math.floor(minWeight % 14)} lbs -{" "}
+                    {Math.floor(maxWeight / 14)}st {Math.floor(maxWeight % 14)}
+                    lbs.
+                  </Typography>
+                )}
               </Box>
             </Box>
           </Grid>
