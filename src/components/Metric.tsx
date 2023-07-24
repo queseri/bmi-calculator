@@ -32,7 +32,7 @@ function Metric(props: {
     const { name, value } = evt.target;
     setCurrentBmi({
       ...currentBmi,
-      [name]: Number(value),
+      [name]: value,
     });
     props.setBmi(() => total);
   }
