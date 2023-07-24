@@ -34,7 +34,7 @@ function Metric(props: {
       ...currentBmi,
       [name]: value,
     });
-   // props.setBmiMetric(() => total);
+    // props.setBmiMetric(() => total);
   }
 
   const { weight, height, total } = currentBmi;
@@ -71,14 +71,28 @@ function Metric(props: {
           <TextField
             id="height"
             type="text"
-            label={"height"}
+            label={"Height"}
             name="height"
             variant={"outlined"}
             onChange={onChange}
             value={height}
+            InputLabelProps={{
+              style: { fontSize: "1.5rem", fontWeight: 400 },
+            }}
             InputProps={{
+              style: { fontSize: "1.5rem", fontWeight: 600 },
               endAdornment: (
-                <InputAdornment position="end">{"cm"}</InputAdornment>
+                <InputAdornment
+                  position="end"
+                  sx={{
+                    ".MuiTypography-root": {
+                      fontSize: "1.5rem",
+                      fontWeight: 600,
+                    },
+                  }}
+                >
+                  {"cm"}
+                </InputAdornment>
               ),
             }}
           />
@@ -90,14 +104,28 @@ function Metric(props: {
           <TextField
             id="weight"
             type="text"
-            label={"weight"}
+            label={"Weight"}
             name="weight"
             variant={"outlined"}
             onChange={onChange}
             value={weight}
+            InputLabelProps={{
+              style: { fontSize: "1.5rem", fontWeight: 400 },
+            }}
             InputProps={{
+              style: { fontSize: "1.5rem", fontWeight: 600 },
               endAdornment: (
-                <InputAdornment position="end">{"kg"}</InputAdornment>
+                <InputAdornment
+                  position="end"
+                  sx={{
+                    ".MuiTypography-root": {
+                      fontSize: "1.5rem",
+                      fontWeight: 600,
+                    },
+                  }}
+                >
+                  {"kg"}
+                </InputAdornment>
               ),
             }}
           />

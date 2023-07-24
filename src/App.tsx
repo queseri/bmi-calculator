@@ -53,11 +53,6 @@ function App() {
   const [message, setMessage] = useState("");
   const [minWeight, setMinWeight] = useState(0);
   const [maxWeight, setMaxWeight] = useState(0);
-  console.log(getMetricTotal);
-  console.log(getImperialTotal);
-  /* const [weightKg, setWeightKg] = useState(0);
-   const [heightCm, setHeightCm] = useState(0);
-    */
 
   const theme = useTheme();
   const { status } = theme;
@@ -70,18 +65,22 @@ function App() {
   // calculate min weight and max weight for a healthy body based on range and height
 
   useEffect(() => {
-    if (bmiMetric < 18.5) {
+    if (bmiMetric < 18.5 || bmiImperial < 18.5) {
       setMessage("Underweight");
-    } else if (bmiMetric >= 18.5 && bmiMetric < 24.9) {
+    } else if (
+      (bmiMetric >= 18.5 && bmiMetric < 24.9) ||
+      (bmiImperial >= 18.5 && bmiImperial < 24.9)
+    ) {
       setMessage(" Healthy weight");
-    } else if (bmiMetric >= 24.9 && bmiMetric < 29.9) {
+    } else if (
+      (bmiMetric >= 24.9 && bmiMetric < 29.9) ||
+      (bmiImperial >= 24.9 && bmiImperial < 29.9)
+    ) {
       setMessage("Overweight");
     } else {
       setMessage("Obese");
     }
-  }, [bmiMetric]);
-
-  console.log(bmiMetric);
+  }, [bmiMetric, bmiImperial]);
 
   return (
     <Container sx={{ paddingInline: "1.5rem", paddingBlockEnd: "2.5rem" }}>
@@ -259,7 +258,7 @@ function App() {
                 ) : (
                   <Typography variant="body1" gutterBottom color={pureWhite}>
                     Your BMI suggests you're {message}. Your ideal weight is
-                    between {Math.floor(minWeight / 14)}st {" "}
+                    between {Math.floor(minWeight / 14)}st{" "}
                     {Math.floor(minWeight % 14)} lbs -{" "}
                     {Math.floor(maxWeight / 14)}st {Math.floor(maxWeight % 14)}
                     lbs.

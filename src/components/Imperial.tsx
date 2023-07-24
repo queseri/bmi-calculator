@@ -101,14 +101,28 @@ function Imperial(props: {
         {/* <InputText measure="ft" label="height" /> */}
         <FormControl fullWidth variant="filled">
           <TextField
-            label={"height"}
+            label={"Height"}
             variant={"outlined"}
             onChange={onChange}
             name={"feet"}
             value={feet}
+            InputLabelProps={{
+              style: { fontSize: "1.5rem", fontWeight: 400 },
+            }}
             InputProps={{
+              style: { fontSize: "1.5rem", fontWeight: 600 },
               endAdornment: (
-                <InputAdornment position="end">{"ft"}</InputAdornment>
+                <InputAdornment
+                  position="end"
+                  sx={{
+                    ".MuiTypography-root": {
+                      fontSize: "1.5rem",
+                      fontWeight: 600,
+                    },
+                  }}
+                >
+                  {"ft"}
+                </InputAdornment>
               ),
             }}
           />
@@ -116,14 +130,28 @@ function Imperial(props: {
         {/* <InputText measure="in" label="height" /> */}
         <FormControl fullWidth variant="filled">
           <TextField
-            label={"height"}
+            label={"Height"}
             variant={"outlined"}
             onChange={onChange}
             name={"inch"}
             value={inch}
+            InputLabelProps={{
+              style: { fontSize: "1.5rem", fontWeight: 400 },
+            }}
             InputProps={{
+              style: { fontSize: "1.5rem", fontWeight: 600 },
               endAdornment: (
-                <InputAdornment position="end">{"in"}</InputAdornment>
+                <InputAdornment
+                  position="end"
+                  sx={{
+                    ".MuiTypography-root": {
+                      fontSize: "1.5rem",
+                      fontWeight: 600,
+                    },
+                  }}
+                >
+                  {"in"}
+                </InputAdornment>
               ),
             }}
           />
@@ -133,14 +161,28 @@ function Imperial(props: {
         {/*  <InputText measure="st" label="weight" /> */}
         <FormControl fullWidth variant="filled">
           <TextField
-            label={"weight"}
+            label={"Weight"}
             variant={"outlined"}
             onChange={onChange}
             name={"stone"}
             value={stone}
+            InputLabelProps={{
+              style: { fontSize: "1.5rem", fontWeight: 400 },
+            }}
             InputProps={{
+              style: { fontSize: "1.5rem", fontWeight: 600 },
               endAdornment: (
-                <InputAdornment position="end">{"st"}</InputAdornment>
+                <InputAdornment
+                  position="end"
+                  sx={{
+                    ".MuiTypography-root": {
+                      fontSize: "1.5rem",
+                      fontWeight: 600,
+                    },
+                  }}
+                >
+                  {"st"}
+                </InputAdornment>
               ),
             }}
           />
@@ -148,14 +190,28 @@ function Imperial(props: {
         {/* <InputText measure="lbs" label="weight" /> */}
         <FormControl fullWidth variant="filled">
           <TextField
-            label={"weight"}
+            label={"Weight"}
             variant={"outlined"}
             onChange={onChange}
             name={"pounds"}
             value={pounds}
+            InputLabelProps={{
+              style: { fontSize: "1.5rem", fontWeight: 400 },
+            }}
             InputProps={{
+              style: { fontSize: "1.5rem", fontWeight: 600 },
               endAdornment: (
-                <InputAdornment position="end">{"lbs"}</InputAdornment>
+                <InputAdornment
+                  position="end"
+                  sx={{
+                    ".MuiTypography-root": {
+                      fontSize: "1.5rem",
+                      fontWeight: 600,
+                    },
+                  }}
+                >
+                  {"lbs"}
+                </InputAdornment>
               ),
             }}
           />
