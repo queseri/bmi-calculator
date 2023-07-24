@@ -7,7 +7,7 @@ function BmiLimitations(props: {
 }) {
   return (
     <Grid item sm={6} md={4} padding={"1rem"}>
-      <Paper elevation={3} sx={{ padding: "1rem", height: "100%" }}>
+      <Paper elevation={6} sx={{ padding: "1rem", height: "100%" }}>
         <Box
           display={"flex"}
           justifyContent={"flex-start"}

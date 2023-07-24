@@ -29,15 +29,20 @@ import Race from "./assets/images/icon-race.svg";
 import BmiPractices from "./components/BmiPractices";
 import BmiLimitations from "./components/BmiLimitations";
 import Header from "./components/Header";
+import { bgLayout } from "./styles/Styles";
 
 function App() {
   const [method, setMethod] = useState("metric");
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const getMetricTotal = JSON.parse(localStorage.getItem("metric")!);
   const [bmiMetric, setBmiMetric] = useState(
-    getMetricTotal !== null && getMetricTotal.total !== null ? getMetricTotal.total : 0
+    getMetricTotal !== null && getMetricTotal.total !== null
+      ? getMetricTotal.total
+      : 0
   );
   const [message, setMessage] = useState("");
+  const [minWeight, setMinWeight] = useState(0);
+  const [maxWeight, setMaxWeight] = useState(0);
   console.log(getMetricTotal);
   /* const [weightKg, setWeightKg] = useState(0);
    const [heightCm, setHeightCm] = useState(0);
@@ -50,47 +55,22 @@ function App() {
   const handleChangeMethod = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMethod((event.target as HTMLInputElement).value);
   };
-  
- 
-useEffect(() => {
-  if (bmiMetric < 18.5) {
-    setMessage("Underweight");
-  } else if (bmiMetric >= 18.5 && bmiMetric < 24.9) {
-    setMessage(" Healthy weight");
-  } else if (bmiMetric >= 24.9 && bmiMetric < 29.9) {
-    setMessage("Overweight");
-  } else {
-    setMessage("Obese");
-  }
-},[bmiMetric])
 
-console.log(bmiMetric)
-  const bgLayout = {
-    zIndex: 2,
-    "&::before": {
-      position: "absolute",
-      content: '""',
-      top: 0,
-      left: 0,
-      borderBottom: {
-        xs: "1px solid black",
-        sm: "none",
-      },
-      width: {
-        xs: "100%",
-        md: "65%",
-      },
-      height: {
-        xs: "100%",
-        md: "100%",
-      },
+  // calculate min weight and max weight for a healthy body based on range and height
 
-      zIndex: -1,
-      borderRadius: "0px 0px 35px 35px",
-      background:
-        "linear-gradient(315deg, #D6E5FC 0%, rgba(214, 252, 254, 0.00) 100%)",
-    },
-  };
+  useEffect(() => {
+    if (bmiMetric < 18.5) {
+      setMessage("Underweight");
+    } else if (bmiMetric >= 18.5 && bmiMetric < 24.9) {
+      setMessage(" Healthy weight");
+    } else if (bmiMetric >= 24.9 && bmiMetric < 29.9) {
+      setMessage("Overweight");
+    } else {
+      setMessage("Obese");
+    }
+  }, [bmiMetric]);
+
+  console.log(bmiMetric);
 
   return (
     <Container sx={{ paddingInline: "1.5rem", paddingBlockEnd: "2.5rem" }}>
@@ -200,7 +180,7 @@ console.log(bmiMetric)
 
               {/* SELECT TEXTFIELD */}
               {method === "metric" ? (
-                <Metric bmi={bmiMetric !== null ? bmiMetric : 0} setBmi={setBmiMetric} />
+                <Metric setBmi={setBmiMetric} setMinWeight={setMinWeight}  setMaxWeight={setMaxWeight}/>
               ) : (
                 <Imperial />
               )}
@@ -242,12 +222,12 @@ console.log(bmiMetric)
                     paddingBottom={".5rem"}
                     paddingTop={".5rem"}
                   >
-                   {bmiMetric !== null ? bmiMetric.toString() : "0"} 
+                    {isNaN(bmiMetric) ? "0" : bmiMetric.toString()}
                   </Typography>
                 </Typography>
                 <Typography variant="body1" gutterBottom color={pureWhite}>
-                  Your BMI suggests you're { message }. Your ideal weight is
-                  between 9st 6lbs - 12st 10lbs.
+                  Your BMI suggests you're {message}. Your ideal weight is
+                  between {minWeight.toFixed(2)} kgs - {maxWeight.toFixed(2)}.
                 </Typography>
               </Box>
             </Box>

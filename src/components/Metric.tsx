@@ -13,7 +13,11 @@ interface Metric {
   total: number;
 }
 
-function Metric(props: { setBmi: (arg0: () => number) => void; bmi: number }) {
+function Metric(props: {
+  setBmi: (arg0: () => number) => void;
+  setMinWeight: (arg0: () => number) => void;
+  setMaxWeight: (arg0: () => number) => void;
+}) {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const getMetricTotal = JSON.parse(localStorage.getItem("metric")!);
   const initialBmi: Metric = {
@@ -35,6 +39,9 @@ function Metric(props: { setBmi: (arg0: () => number) => void; bmi: number }) {
 
   const { weight, height, total } = currentBmi;
 
+  // minWeight = 18.5 / 10000 * height * height
+  // maxWeight = 24.9 / 10000 * height * height
+
   useEffect(() => {
     setCurrentBmi({
       ...currentBmi,
@@ -42,6 +49,8 @@ function Metric(props: { setBmi: (arg0: () => number) => void; bmi: number }) {
     });
     props.setBmi(() => total);
     localStorage.setItem("metric", JSON.stringify({ ...currentBmi }));
+    props.setMinWeight(() => (18.5 / 10000) * height * height);
+    props.setMaxWeight(() => (24.9 / 10000) * height * height);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [weight, height, total]);
 
