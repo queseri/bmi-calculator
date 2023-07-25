@@ -29,8 +29,8 @@ import Race from "./assets/images/icon-race.svg";
 import BmiPractices from "./components/BmiPractices";
 import BmiLimitations from "./components/BmiLimitations";
 import Header from "./components/Header";
-import { bgLayout } from "./styles/Styles";
 import { leftPattern } from "./styles/Styles";
+import Hero from "./components/Hero";
 
 function App() {
   const [method, setMethod] = useState("metric");
@@ -90,39 +90,10 @@ function App() {
       {/* MAIN START */}
       <Box component={"main"}>
         <Grid container justifyContent={"center"} alignItems={"center"}>
-          <Grid item xs={12} md={6} sx={bgLayout}>
-            <Typography
-              variant="h1"
-              gutterBottom
-              fontSize={"3rem"}
-              fontWeight={600}
-              lineHeight={1.1}
-              color={gunMetal}
-              textAlign={{
-                md: "start",
-              }}
-            >
-              Body Mass Index Calculator
-            </Typography>
-            <Typography
-              variant="body1"
-              lineHeight={1.5}
-              color={darkElectricBlue}
-              paddingRight={{
-                lg: "6rem",
-              }}
-              textAlign={{
-                md: "start",
-              }}
-            >
-              Better understand your weight in relation to your height using our
-              body mass index (BM) calculator. While BMI is not the sole
-              determinant of a healthy weight, it offers a valuable starting
-              point to evaluate your overall health and well-being.
-            </Typography>
-          </Grid>
-
+          {/* GRID ITEM 1 */}
+          <Hero />
           {/* FORM WEIGHT AND HEIGHT RADIOS */}
+          {/* GRID ITEM 2 */}
           <Grid
             item
             xs={12}
@@ -324,7 +295,7 @@ function App() {
           spacing={4}
           width={"100%"}
           marginLeft={0}
-          sx={{           
+          sx={{
             background:
               "var(--gradient-1, linear-gradient(315deg, #D6E6FE 0%, rgba(214, 252, 254, 0.25%) 100%))",
           }}
