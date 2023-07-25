@@ -30,6 +30,7 @@ import BmiPractices from "./components/BmiPractices";
 import BmiLimitations from "./components/BmiLimitations";
 import Header from "./components/Header";
 import { bgLayout } from "./styles/Styles";
+import { leftPattern } from "./styles/Styles";
 
 function App() {
   const [method, setMethod] = useState("metric");
@@ -107,6 +108,9 @@ function App() {
               variant="body1"
               lineHeight={1.5}
               color={darkElectricBlue}
+              paddingRight={{
+                lg: "6rem",
+              }}
               textAlign={{
                 md: "start",
               }}
@@ -213,7 +217,6 @@ function App() {
                 sx={{
                   background:
                     "linear-gradient(90deg, #345FF6 0%, #587DFF 100%)",
-
                   borderBottomRightRadius: {
                     sm: "100px",
                   },
@@ -273,13 +276,22 @@ function App() {
           container
           justifyContent={"center"}
           alignItems={"center"}
-          paddingY={"2.5rem"}
+          paddingY={"5.5rem"}
+          position={"relative"}
+          sx={leftPattern}
         >
           <Grid item sm={6}>
             <img src={ManEating} alt="man eating with sticks" />
           </Grid>
 
-          <Grid item sm={6}>
+          <Grid
+            item
+            sm={6}
+            paddingX={{
+              sm: "2rem",
+              lg: "3.5rem",
+            }}
+          >
             <Typography
               variant="h2"
               gutterBottom
@@ -287,10 +299,15 @@ function App() {
               fontSize={"2rem"}
               fontWeight={600}
               paddingY={"2rem"}
+              textAlign={"left"}
             >
               What does your BMI result mean?
             </Typography>
-            <Typography variant="body1" color={darkElectricBlue}>
+            <Typography
+              variant="body1"
+              color={darkElectricBlue}
+              textAlign={"left"}
+            >
               {" "}
               A BMI range of 18.5 to 24.9 is considered a 'healthy weight.'
               Maintaining a healthy weight may lower your chances of
@@ -302,7 +319,16 @@ function App() {
             </Typography>
           </Grid>
         </Grid>
-        <Grid container spacing={4}>
+        <Grid
+          container
+          spacing={4}
+          width={"100%"}
+          marginLeft={0}
+          sx={{           
+            background:
+              "var(--gradient-1, linear-gradient(315deg, #D6E6FE 0%, rgba(214, 252, 254, 0.25%) 100%))",
+          }}
+        >
           <BmiPractices
             value={4}
             img={Eating}
@@ -332,9 +358,22 @@ function App() {
           justifyContent={"center"}
           alignItems={"stretch"}
           width={"100%"}
-          margin={"auto"}
+          marginX={"auto"}
+          marginY={{
+            xs: "2,5rem",
+            lg: "6rem",
+          }}
         >
-          <Grid item xs={12} md={7} paddingY={"2.5rem"} paddingTop={0}>
+          <Grid
+            item
+            xs={12}
+            md={7}
+            paddingY={"2.5rem"}
+            paddingTop={0}
+            paddingRight={{
+              lg: "6rem",
+            }}
+          >
             <Typography
               variant="h2"
               color={gunMetal}
@@ -344,7 +383,12 @@ function App() {
             >
               Limitations of BMI
             </Typography>
-            <Typography color={darkElectricBlue}>
+            <Typography
+              color={darkElectricBlue}
+              textAlign={{
+                lg: "left",
+              }}
+            >
               Although BMI is often a practical indicator of healthy weight, it
               is not suited for every person. Specific groups should carefully
               consider their BMI outcomes, and in certain cases, the measurement
