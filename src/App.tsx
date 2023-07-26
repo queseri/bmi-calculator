@@ -106,7 +106,7 @@ function App() {
               component={"form"}
               noValidate
               borderRadius={"16px"}
-              margin={"24px auto"}
+              margin={"40px auto"}
               padding={"16px"}
               boxShadow={"16px 32px 56px 0px rgba(143, 174, 207, 0.25)"}
               sx={{
@@ -331,7 +331,9 @@ function App() {
           width={"100%"}
           marginX={"auto"}
           marginY={{
-            xs: "2,5rem",
+            xs: "2.5rem",
+            sm: "3rem",
+            md: "4rem",
             lg: "6rem",
           }}
         >
@@ -350,6 +352,9 @@ function App() {
               color={gunMetal}
               fontSize={"2rem"}
               fontWeight={600}
+              textAlign={{
+                md: "left",
+              }}
               gutterBottom
             >
               Limitations of BMI
@@ -357,7 +362,7 @@ function App() {
             <Typography
               color={darkElectricBlue}
               textAlign={{
-                lg: "left",
+                md: "left",
               }}
             >
               Although BMI is often a practical indicator of healthy weight, it
@@ -377,7 +382,7 @@ function App() {
             item
             md={4}
             justifyContent={"center"}
-            alignItems={"center"}
+            alignItems={"baseline"}
             sx={{
               display: {
                 xs: "none",

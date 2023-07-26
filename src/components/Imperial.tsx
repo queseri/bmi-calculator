@@ -107,7 +107,7 @@ function Imperial(props: {
             name={"feet"}
             value={feet}
             InputLabelProps={{
-              style: { fontSize: "1.5rem", fontWeight: 400 },
+              style: { fontSize: "0.875rem", fontWeight: 400, lineHeight: 1.5 },
             }}
             InputProps={{
               style: { fontSize: "1.5rem", fontWeight: 600 },
@@ -136,7 +136,7 @@ function Imperial(props: {
             name={"inch"}
             value={inch}
             InputLabelProps={{
-              style: { fontSize: "1.5rem", fontWeight: 400 },
+              style: { fontSize: "0.875rem", fontWeight: 400, lineHeight: 1.5 },
             }}
             InputProps={{
               style: { fontSize: "1.5rem", fontWeight: 600 },
@@ -167,7 +167,7 @@ function Imperial(props: {
             name={"stone"}
             value={stone}
             InputLabelProps={{
-              style: { fontSize: "1.5rem", fontWeight: 400 },
+              style: { fontSize: "0.875rem", fontWeight: 400, lineHeight: 1.5 },
             }}
             InputProps={{
               style: { fontSize: "1.5rem", fontWeight: 600 },
@@ -196,7 +196,7 @@ function Imperial(props: {
             name={"pounds"}
             value={pounds}
             InputLabelProps={{
-              style: { fontSize: "1.5rem", fontWeight: 400 },
+              style: { fontSize: "0.875rem", fontWeight: 400, lineHeight: 1.5 },
             }}
             InputProps={{
               style: { fontSize: "1.5rem", fontWeight: 600 },

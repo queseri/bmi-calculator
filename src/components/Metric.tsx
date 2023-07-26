@@ -77,7 +77,7 @@ function Metric(props: {
             onChange={onChange}
             value={height}
             InputLabelProps={{
-              style: { fontSize: "1.5rem", fontWeight: 400 },
+              style: { fontSize: "0.875rem", fontWeight: 400, lineHeight: 1.5 },
             }}
             InputProps={{
               style: { fontSize: "1.5rem", fontWeight: 600 },
@@ -110,7 +110,7 @@ function Metric(props: {
             onChange={onChange}
             value={weight}
             InputLabelProps={{
-              style: { fontSize: "1.5rem", fontWeight: 400 },
+              style: { fontSize: "0.875rem", fontWeight: 400, lineHeight: 1.5 },
             }}
             InputProps={{
               style: { fontSize: "1.5rem", fontWeight: 600 },
