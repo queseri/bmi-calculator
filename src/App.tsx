@@ -208,7 +208,10 @@ function App() {
                   Your BMI is...
                   <Typography
                     component="span"
-                    fontSize={"3rem"}
+                    fontSize={{
+                      xs: "3rem",
+                      lg: "4rem",
+                    }}
                     lineHeight={1.1}
                     fontWeight={600}
                     paddingBottom={".5rem"}
@@ -247,7 +250,7 @@ function App() {
           container
           justifyContent={"center"}
           alignItems={"center"}
-          paddingY={"5.5rem"}
+          paddingY={"8rem"}
           position={"relative"}
           sx={leftPattern}
         >
@@ -267,7 +270,7 @@ function App() {
               variant="h2"
               gutterBottom
               color={gunMetal}
-              fontSize={"2rem"}
+              fontSize={{ xs: "2rem", lg: "3rem" }}
               fontWeight={600}
               paddingY={"2rem"}
               textAlign={"left"}

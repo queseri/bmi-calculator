@@ -58,13 +58,11 @@ function Metric(props: {
   return (
     <Grid
       container
-      spacing={2}
-      flexDirection={"column"}
-      flexWrap={"nowrap"}
-      marginBottom={"1rem"}
-      marginTop={"1rem"}
+      spacing={2}     
+    //  marginBottom={"1rem"}
+    //  marginTop={"1rem"}
     >
-      <Box component={Grid} item xs={12}>
+      <Box component={Grid} item xs={12} sm={6}>
         {/* <InputText measure="cm" label="height" /> */}
 
         <FormControl fullWidth variant="filled">
@@ -99,7 +97,7 @@ function Metric(props: {
         </FormControl>
       </Box>
 
-      <Box component={Grid} item xs={12}>
+      <Box component={Grid} item xs={12} sm={6}>
         <FormControl fullWidth variant="filled">
           <TextField
             id="weight"

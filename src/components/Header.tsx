@@ -17,8 +17,14 @@ function Header() {
           component={"a"}
           href="/"
           sx={{ position: "relative", zIndex: 3 }}
+          paddingY={{
+            lg: "2.5rem",
+          }}
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"center"}
         >
-          <img className="logo" src={Logo} alt="Bmi" />
+          <img className="logo" src={Logo} alt="Body mass index" />
         </Grid>
       </Grid>
     </Box>

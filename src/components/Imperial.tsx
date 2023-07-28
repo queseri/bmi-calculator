@@ -95,8 +95,8 @@ function Imperial(props: {
         columnGap={2}
         flexDirection={"row"}
         flexWrap={"nowrap"}
-        marginBottom={"1rem"}
-        marginTop={"1rem"}
+       // marginBottom={"1rem"}
+       // marginTop={"1rem"}
       >
         {/* <InputText measure="ft" label="height" /> */}
         <FormControl fullWidth variant="filled">

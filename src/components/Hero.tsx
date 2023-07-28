@@ -11,7 +11,10 @@ function Hero() {
       <Typography
         variant="h1"
         gutterBottom
-        fontSize={"3rem"}
+        fontSize={{
+          xs: "3rem",
+          lg: "4rem",
+        }}
         fontWeight={600}
         lineHeight={1.1}
         color={gunMetal}
