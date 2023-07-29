@@ -30,20 +30,17 @@ Users should be able to:
 
 ### Screenshot
 
-- Mobile screenshot
+
 ![Mobile screenshot](src/assets/screenshots/Bmi-mobile.jpeg)
-- Tablet screenshot
 ![Tablet screenshot](src/assets/screenshots/bmi-tablet.jpeg)
-- Desktop screenshot
 ![Desktop screenshot](src/assets/screenshots/bmi-desktop.jpeg)
-- Darkmode screenshot
 ![Dark mode desktop screenshot](src/assets/screenshots/bmi-darkmode.jpeg)
 
 ### Links
 
 - Frontend Mentor submission page: [Bmi calculator - Frontend mentor](https://www.frontendmentor.io/solutions/bmi-calculator-uStAanTBe2)
 - Live Site URL: [Bmi calculator](https://bmi-calculator-ckm.netlify.app/)
-
+- scan the Qr code below for a live preview
 ![Scan QR Code for live preview](src/assets/screenshots/qrcode_bmi-calculator-ckm.netlify.app.png)
 
 ## My process
