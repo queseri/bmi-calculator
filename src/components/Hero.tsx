@@ -3,8 +3,8 @@ import { useTheme } from "@mui/material/styles";
 import { bgLayout } from "../styles/Styles";
 
 function Hero() {
-  const theme = useTheme();
-  const { status } = theme;
+  const colorTheme = useTheme();
+  const { status } = colorTheme;
   const { gunMetal, darkElectricBlue } = status;
   return (
     <Grid item xs={12} md={6} sx={bgLayout}>

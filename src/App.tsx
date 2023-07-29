@@ -55,8 +55,8 @@ function App() {
   const [minWeight, setMinWeight] = useState(0);
   const [maxWeight, setMaxWeight] = useState(0);
 
-  const theme = useTheme();
-  const { status } = theme;
+  const colorTheme = useTheme();
+  const { status } = colorTheme;
   const { pureWhite, gunMetal, darkElectricBlue } = status;
 
   const handleChangeMethod = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -199,7 +199,7 @@ function App() {
                 <Typography
                   variant="h2"
                   gutterBottom
-                  color={theme.status.pureWhite}
+                  color={colorTheme.status.pureWhite}
                   fontWeight={600}
                   fontSize={"1rem"}
                   display={"flex"}

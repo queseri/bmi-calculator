@@ -6,8 +6,8 @@ function BmiPractices(props: {
   heading: string;
   content: string;
 }) {
-  const theme = useTheme();
-  const { status } = theme;
+  const colorTheme = useTheme();
+  const { status } = colorTheme;
   const { gunMetal, darkElectricBlue } = status;
 
   return (

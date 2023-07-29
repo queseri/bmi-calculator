@@ -90,15 +90,7 @@ function Imperial(props: {
 
   return (
     <Box component={Grid} container rowGap={2}>
-      <Grid
-        container
-        columnGap={2}
-        flexDirection={"row"}
-        flexWrap={"nowrap"}
-       // marginBottom={"1rem"}
-       // marginTop={"1rem"}
-      >
-        {/* <InputText measure="ft" label="height" /> */}
+      <Grid container columnGap={2} flexDirection={"row"} flexWrap={"nowrap"}>
         <FormControl fullWidth variant="filled">
           <TextField
             label={"Height"}

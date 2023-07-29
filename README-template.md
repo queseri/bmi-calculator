@@ -30,12 +30,15 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![Mobile screenshot](src/assets/screenshots/Bmi-mobile.jpeg)
+![Tablet screenshot](src/assets/screenshots/bmi-tablet.jpeg)
+![Desktop screenshot](src/assets/screenshots/bmi-desktop.jpeg)
+![Dark mode desktop screenshot](src/assets/screenshots/bmi-darkmode.jpeg)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Frontend Mentor submission page: [Bmi calculator - Frontend mentor](https://www.frontendmentor.io/solutions/bmi-calculator-uStAanTBe2)
+- Live Site URL: [Bmi calculator](https://bmi-calculator-ckm.netlify.app/)
 
 ## My process
 
@@ -51,9 +54,11 @@ Users should be able to:
 
 ### What I learned
 
-#### Grid 
-The `Grid` in Material UI uses CSS's Flexible Box module for high flexibility. It consist of 12 columns which should be 
+#### Grid
+
+The `Grid` in Material UI uses CSS's Flexible Box module for high flexibility. It consist of 12 columns which should be
 represented with integer values. It will be declared as follows
+
 ```tsx
 <Grid container spacing={2}>
   <Grid item xs={8}>
@@ -70,25 +75,19 @@ represented with integer values. It will be declared as follows
   </Grid>
 </Grid>
 ```
+
 The parent is further labelled with `container`, while the children will have the `item`
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
-
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Material ui - customization theming](https://mui.com/material-ui/customization/theming/) - customization and overiding default Material ui styles
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Website - [Chamu Mutezva](https://github.com/ChamuMutezva)
+- Frontend Mentor - [@ChamuMutezva](https://www.frontendmentor.io/profile/ChamuMutezva)
+- Twitter - [@ChamuMutezva](https://twitter.com/ChamuMutezva)
+
 ## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-

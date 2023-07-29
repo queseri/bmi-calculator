@@ -56,15 +56,8 @@ function Metric(props: {
 
   console.log(total);
   return (
-    <Grid
-      container
-      spacing={2}     
-    //  marginBottom={"1rem"}
-    //  marginTop={"1rem"}
-    >
+    <Grid container spacing={2}>
       <Box component={Grid} item xs={12} sm={6}>
-        {/* <InputText measure="cm" label="height" /> */}
-
         <FormControl fullWidth variant="filled">
           <TextField
             id="height"
