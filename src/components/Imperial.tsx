@@ -56,7 +56,7 @@ function Imperial(props: {
       [name]: value,
     });
     props.setBmiImperial(() => total);
-    console.log(name, value);
+    // console.log(name, value);
   }
 
   const { feet, inch, pounds, stone, total } = currentBmi;
@@ -64,14 +64,14 @@ function Imperial(props: {
   useEffect(() => {
     const totalHeightInch = Number(feet) * 12 + Number(inch);
     const totalWeightPounds = Number(stone) * 14 + Number(pounds);
-    console.log(`stones : ${stone} , pounds: ${pounds}`);
-    console.log(
-      `total weight pounds: ${stone} * 14 + ${pounds}: ${totalWeightPounds}`
-    );
-    console.log(`feet: ${feet} , inch: ${inch}`);
-    console.log(
-      `total height inches: ${feet} * 12 + ${inch}: ${totalHeightInch}`
-    );
+    //  console.log(`stones : ${stone} , pounds: ${pounds}`);
+    //  console.log(
+    //    `total weight pounds: ${stone} * 14 + ${pounds}: ${totalWeightPounds}`
+    //  );
+    //  console.log(`feet: ${feet} , inch: ${inch}`);
+    //  console.log(
+    //    `total height inches: ${feet} * 12 + ${inch}: ${totalHeightInch}`
+    //  );
     setCurrentBmi({
       ...currentBmi,
       total: Number(

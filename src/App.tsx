@@ -2,18 +2,7 @@ import { useEffect, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 
 import "./App.css";
-import {
-  Box,
-  Container,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Grid,
-  Radio,
-  RadioGroup,
-  Typography,
-} from "@mui/material";
-// import { css } from "@emotion/react";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import RightPattern from "./assets/images/pattern-curved-line-right.svg";
 import Metric from "./components/Metric";
 import Imperial from "./components/Imperial";
@@ -31,6 +20,7 @@ import BmiLimitations from "./components/BmiLimitations";
 import Header from "./components/Header";
 import { leftPattern } from "./styles/Styles";
 import Hero from "./components/Hero";
+import SelectMethod from "./components/SelectMethod";
 
 function App() {
   const [method, setMethod] = useState("metric");
@@ -39,7 +29,7 @@ function App() {
   const getMetricTotal = JSON.parse(localStorage.getItem("metric")!);
   const [bmiMetric, setBmiMetric] = useState(
     getMetricTotal !== null && getMetricTotal.total !== null
-      ? getMetricTotal.total
+      ? Number(getMetricTotal.total)
       : 0
   );
 
@@ -47,7 +37,7 @@ function App() {
   const getImperialTotal = JSON.parse(localStorage.getItem("imperial")!);
   const [bmiImperial, setBmiImperial] = useState(
     getImperialTotal !== null && getImperialTotal.total !== null
-      ? getImperialTotal.total
+      ? Number(getImperialTotal.total)
       : 0
   );
 
@@ -66,22 +56,28 @@ function App() {
   // calculate min weight and max weight for a healthy body based on range and height
 
   useEffect(() => {
-    if (bmiMetric < 18.5 || bmiImperial < 18.5) {
-      setMessage("Underweight");
-    } else if (
-      (bmiMetric >= 18.5 && bmiMetric < 24.9) ||
-      (bmiImperial >= 18.5 && bmiImperial < 24.9)
-    ) {
-      setMessage(" Healthy weight");
-    } else if (
-      (bmiMetric >= 24.9 && bmiMetric < 29.9) ||
-      (bmiImperial >= 24.9 && bmiImperial < 29.9)
-    ) {
-      setMessage("Overweight");
+    if (method === "metric") {
+      if (bmiMetric < 18.5) {
+        setMessage("Underweight");
+      } else if (bmiMetric >= 18.5 && bmiMetric < 24.9) {
+        setMessage("Healthy weight");
+      } else if (bmiMetric >= 24.9 && bmiMetric < 29.9) {
+        setMessage("Overweight");
+      } else {
+        setMessage("Obese");
+      }
     } else {
-      setMessage("Obese");
+      if (bmiImperial < 18.5) {
+        setMessage("Underweight");
+      } else if (bmiImperial >= 18.5 && bmiImperial < 24.9) {
+        setMessage("Healthy weight");
+      } else if (bmiImperial >= 24.9 && bmiImperial < 29.9) {
+        setMessage("Overweight");
+      } else {
+        setMessage("Obese");
+      }
     }
-  }, [bmiMetric, bmiImperial]);
+  }, [bmiMetric, bmiImperial, message, method]);
 
   return (
     <Container sx={{ paddingInline: "1.5rem", paddingBlockEnd: "2.5rem" }}>
@@ -113,55 +109,11 @@ function App() {
                 background: "#FFF",
               }}
             >
-              <FormControl fullWidth>
-                <FormLabel
-                  id="measurement"
-                  aria-hidden={true}
-                  sx={{
-                    fontSize: "1.5rem",
-                    fontWeight: 600,
-                    color: { gunMetal },
-                  }}
-                >
-                  Enter your details below
-                </FormLabel>
-                <RadioGroup
-                  row
-                  aria-labelledby="measurement"
-                  defaultValue={method}
-                  value={method}
-                  onChange={handleChangeMethod}
-                  name="measurement-group"
-                  sx={{
-                    marginBlock: "1rem",
-                  }}
-                >
-                  {/* METRIC RADIO BUTTON */}
-                  <FormControlLabel
-                    sx={{
-                      flex: "1 1",
-                      "& .MuiFormControlLabel-label": {
-                        fontWeight: 600,
-                      },
-                    }}
-                    value="metric"
-                    control={<Radio />}
-                    label="Metric"
-                  />
-                  {/*IMPERIAL RADIO BUTTON */}
-                  <FormControlLabel
-                    sx={{
-                      flex: "1 1",
-                      "& .MuiFormControlLabel-label": {
-                        fontWeight: 600,
-                      },
-                    }}
-                    value="imperial"
-                    control={<Radio />}
-                    label="Imperial"
-                  />
-                </RadioGroup>
-              </FormControl>
+              {/* Select measurement method - imperial or metric (radio buttons) */}
+              <SelectMethod
+                method={method}
+                handleChangeMethod={handleChangeMethod}
+              />
 
               {/* SELECT TEXTFIELD */}
               {method === "metric" ? (

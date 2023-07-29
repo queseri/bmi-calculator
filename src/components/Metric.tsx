@@ -54,7 +54,7 @@ function Metric(props: {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [weight, height, total]);
 
-  console.log(total);
+//  console.log(total);
   return (
     <Grid container spacing={2}>
       <Box component={Grid} item xs={12} sm={6}>
