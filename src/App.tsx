@@ -52,6 +52,38 @@ function App() {
   const handleChangeMethod = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMethod((event.target as HTMLInputElement).value);
   };
+ 
+  function title1() {
+    if (method === "metric") {
+      if (isNaN(bmiMetric) || bmiMetric === 0) {
+        return "";
+      } else {
+        return "Your BMI is...";
+      }
+    } else {
+      if (isNaN(bmiImperial) || bmiImperial === 0) {
+        return "";
+      } else {
+        return "Your BMI is...";
+      }
+    }
+  }
+
+  function title2() {
+    if (method === "metric") {
+      if (isNaN(bmiMetric) || bmiMetric === 0) {
+        return "Welcome";
+      } else {
+        return bmiMetric.toString();
+      }
+    } else {
+      if (isNaN(bmiImperial) || bmiImperial === 0) {
+        return "Welcome";
+      } else {
+        return bmiImperial.toString();
+      }
+    }
+  }
 
   // calculate min weight and max weight for a healthy body based on range and height
 
@@ -157,7 +189,7 @@ function App() {
                   display={"flex"}
                   flexDirection={"column"}
                 >
-                  Your BMI is...
+                  {title1()}
                   <Typography
                     component="span"
                     fontSize={{
@@ -169,20 +201,26 @@ function App() {
                     paddingBottom={".5rem"}
                     paddingTop={".5rem"}
                   >
-                    {method === "metric"
-                      ? isNaN(bmiMetric)
-                        ? "0"
-                        : bmiMetric.toString()
-                      : isNaN(bmiImperial)
-                      ? "0"
-                      : bmiImperial.toString()}
+                    {title2()}
                   </Typography>
                 </Typography>
                 {method === "metric" ? (
+                  bmiMetric === 0 || isNaN(bmiMetric) ? (
+                    <Typography variant="body1" gutterBottom color={pureWhite}>
+                      Enter your height and weight and you'll see your BMI
+                      result here
+                    </Typography>
+                  ) : (
+                    <Typography variant="body1" gutterBottom color={pureWhite}>
+                      Your BMI suggests you're {message}. Your ideal weight is
+                      between {minWeight.toFixed(2)} kgs -{" "}
+                      {maxWeight.toFixed(2)} kgs.
+                    </Typography>
+                  )
+                ) : bmiImperial === 0 || isNaN(bmiImperial) ? (
                   <Typography variant="body1" gutterBottom color={pureWhite}>
-                    Your BMI suggests you're {message}. Your ideal weight is
-                    between {minWeight.toFixed(2)} kgs - {maxWeight.toFixed(2)}{" "}
-                    kgs.
+                    Enter your height and weight and you'll see your BMI result
+                    here
                   </Typography>
                 ) : (
                   <Typography variant="body1" gutterBottom color={pureWhite}>
