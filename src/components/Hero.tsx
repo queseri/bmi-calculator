@@ -7,7 +7,7 @@ function Hero() {
   const { status } = colorTheme;
   const { gunMetal, darkElectricBlue } = status;
   return (
-    <Grid item xs={12} md={6} sx={bgLayout}>
+    <Grid item xs={12} md={6} >
       <Typography
         variant="h1"
         gutterBottom

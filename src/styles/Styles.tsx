@@ -12,14 +12,15 @@ export const bgLayout = {
     },
     width: {
       xs: "100%",
-      md: "65%",
+      md: "80%",
     },
     height: {
-      xs: "100%",
-      lg: "134%",
+      xs: "13%",
+      sm: "20%",
+      lg: "30%",
     },
 
-    zIndex: -1,
+    zIndex: 1,
     borderRadius: "0px 0px 35px 35px",
     background:
       "linear-gradient(315deg, #D6E5FC 0%, rgba(214, 252, 254, 0.00) 100%)",

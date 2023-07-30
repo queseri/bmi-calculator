@@ -18,7 +18,7 @@ import Race from "./assets/images/icon-race.svg";
 import BmiPractices from "./components/BmiPractices";
 import BmiLimitations from "./components/BmiLimitations";
 import Header from "./components/Header";
-import { leftPattern } from "./styles/Styles";
+import { bgLayout, leftPattern } from "./styles/Styles";
 import Hero from "./components/Hero";
 import SelectMethod from "./components/SelectMethod";
 
@@ -52,7 +52,7 @@ function App() {
   const handleChangeMethod = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMethod((event.target as HTMLInputElement).value);
   };
- 
+
   function title1() {
     if (method === "metric") {
       if (isNaN(bmiMetric) || bmiMetric === 0) {
@@ -112,12 +112,26 @@ function App() {
   }, [bmiMetric, bmiImperial, message, method]);
 
   return (
-    <Container sx={{ paddingInline: "1.5rem", paddingBlockEnd: "2.5rem" }}>
+    <Container
+      sx={{
+        paddingInline: "1.5rem",
+        paddingBlockEnd: "2.5rem",
+        position: "relative",
+      }}
+      maxWidth="lg"
+      disableGutters={true}
+    >
       <Header />
 
       {/* MAIN START */}
-      <Box component={"main"}>
-        <Grid container justifyContent={"center"} alignItems={"center"}>
+      <Box component={"main"} sx={bgLayout}>
+        <Grid
+          container
+          justifyContent={"center"}
+          alignItems={"center"}
+          position={"relative"}
+          zIndex={1}
+        >
           {/* GRID ITEM 1 */}
           <Hero />
           {/* FORM WEIGHT AND HEIGHT RADIOS */}
