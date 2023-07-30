@@ -30,7 +30,6 @@ Users should be able to:
 
 ### Screenshot
 
-
 ![Mobile screenshot](src/assets/screenshots/Bmi-mobile.jpeg)
 ![Tablet screenshot](src/assets/screenshots/bmi-tablet.jpeg)
 ![Desktop screenshot](src/assets/screenshots/bmi-desktop.jpeg)
@@ -41,7 +40,7 @@ Users should be able to:
 - Frontend Mentor submission page: [Bmi calculator - Frontend mentor](https://www.frontendmentor.io/solutions/bmi-calculator-uStAanTBe2)
 - Live Site URL: [Bmi calculator](https://bmi-calculator-ckm.netlify.app/)
 - scan the Qr code below for a live preview
-![Scan QR Code for live preview](src/assets/screenshots/qrcode_bmi-calculator-ckm.netlify.app.png)
+  ![Scan QR Code for live preview](src/assets/screenshots/qrcode_bmi-calculator-ckm.netlify.app.png)
 
 ## My process
 
@@ -56,6 +55,95 @@ Users should be able to:
 - [Material-ui](https://mui.com/) - Material UI is a library of React UI components that implements Google's Material Design.
 
 ### What I learned
+
+#### Customisation in Material-ui
+
+Material-ui uses some built-in theme colours and font sizes. I created variables that I had intended to use to override some of the
+colours and font-sizes but could not successfully do so as the values where discarded. In order to create the colour variables , I had to
+do the following steps:
+
+1. create a `theme.d.tsx` file in the `src` folder. The file has the following declarations
+
+```tsx
+import { ThemeOptions } from "@mui/material/styles";
+
+declare module "@mui/material/styles" {
+  interface Theme {
+    status: {
+      pureWhite: string;
+      lightGrey: string;
+      gunMetal: string;
+      darkElectricBlue: string;
+      blue: string;
+    };
+  }
+  interface ThemeOptions {
+    status: {
+      pureWhite: React.CSSProperties["color"];
+      lightGrey: React.CSSProperties["color"];
+      gunMetal: React.CSSProperties["color"];
+      darkElectricBlue: React.CSSProperties["color"];
+      blue: React.CSSProperties["color"];
+    };
+  }
+}
+```
+
+2. In the `main.tsx` file , make the following adjustments to the code
+
+- import `createTheme` and `ThemeProvider` from Material-ui
+- declare a const `theme` variable
+- wrap the app with the `ThemeProvider`
+
+```tsx
+import { CssBaseline, createTheme, ThemeProvider } from "@mui/material";
+
+import App from "./App.tsx";
+import "./index.css";
+
+const theme = createTheme({
+  status: {
+    pureWhite: "hsla(0, 0%, 100%, 1)",
+    lightGrey: "hsla(200, 24%, 88%, 1)",
+    gunMetal: "hsla(215, 31%, 21%, 1)",
+    darkElectricBlue: "hsla(215, 17%, 44%, 1)",
+    blue: "hsla(227, 92%, 58%, 1)",
+  },
+  palette: {
+    // primary: {
+    // light: "hsla(215, 31%, 21%, 1)",
+    //  main: "hsla(0, 0,100%, 1)",
+    //  },
+  },
+  typography: {
+    fontFamily: ["Inter", "sans-serif"].join(","),
+    h1: {
+      fontSize: "5rem",
+    },
+  },
+});
+
+theme.typography.h1 = {
+  fontSize: "4rem",
+};
+
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  <React.StrictMode>
+    <ThemeProvider theme={theme}>
+      <CssBaseline enableColorScheme />
+      <App />
+    </ThemeProvider>
+  </React.StrictMode>
+);
+```
+
+3. Finally in any file that you want to use the variables created by createTheme above , do the following:
+
+- import `import { useTheme } from "@mui/material/styles";`
+- get the colorTheme `const colorTheme = useTheme();`
+- get the status object which has the colours `const { status } = colorTheme;`
+- destructure the `status` variable `const { pureWhite, gunMetal, darkElectricBlue } = status;`
+- Example of usage in an element `<Typography variant="body1" gutterBottom color={pureWhite}>`
 
 #### Grid
 
