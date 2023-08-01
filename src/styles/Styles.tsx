@@ -15,9 +15,9 @@ export const bgLayout = {
       md: "80%",
     },
     height: {
-      xs: "13%",
-      sm: "20%",
-      lg: "30%",
+      xs: "110vh",
+      sm: "100vh",
+      lg: "140vh",
     },
 
     zIndex: 1,

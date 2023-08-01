@@ -116,7 +116,7 @@ function App() {
       sx={{
         paddingInline: "1.5rem",
         paddingBlockEnd: "2.5rem",
-        position: "relative",
+       // position: "relative",
       }}
       maxWidth="lg"
       disableGutters={true}
