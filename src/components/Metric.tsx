@@ -6,6 +6,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useEffect, useState } from "react";
+import { bmiCalculator } from "../utils/bmiCalculator";
 
 interface Metric {
   weight: number;
@@ -45,7 +46,8 @@ function Metric(props: {
   useEffect(() => {
     setCurrentBmi({
       ...currentBmi,
-      total: Number(((weight / height / height) * 10000).toFixed(2)),
+      // total: Number(((weight / height / height) * 10000).toFixed(2)),
+      total: Number(bmiCalculator(weight, height, 10000).toFixed(2)),
     });
     props.setBmiMetric(() => total);
     localStorage.setItem("metric", JSON.stringify({ ...currentBmi }));
@@ -54,7 +56,7 @@ function Metric(props: {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [weight, height, total]);
 
-//  console.log(total);
+  //  console.log(total);
   return (
     <Grid container spacing={2}>
       <Box component={Grid} item xs={12} sm={6}>
