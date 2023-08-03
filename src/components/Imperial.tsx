@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 // import InputText from "./InputText";
 import { useEffect, useState } from "react";
-import { bmiCalculator } from "../utils/bmiCalculator";
+import { bmiCalculator, minMaxWeight } from "../utils/bmiCalculator";
 
 interface Imperial {
   feet: number;
@@ -78,8 +78,10 @@ function Imperial(props: {
 
     props.setBmiImperial(() => total);
     localStorage.setItem("imperial", JSON.stringify({ ...currentBmi }));
-    props.setMinWeight(() => (18.5 / 703) * totalHeightInch * totalHeightInch);
-    props.setMaxWeight(() => (24.9 / 703) * totalHeightInch * totalHeightInch);
+    // props.setMinWeight(() => (18.5 / 703) * totalHeightInch * totalHeightInch);
+    // props.setMaxWeight(() => (24.9 / 703) * totalHeightInch * totalHeightInch);
+    props.setMinWeight(() => minMaxWeight(18.5, 703, totalHeightInch));
+    props.setMaxWeight(() => minMaxWeight(24.9, 703, totalHeightInch));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [feet, inch, pounds, stone, total]);
 

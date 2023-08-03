@@ -6,7 +6,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { bmiCalculator } from "../utils/bmiCalculator";
+import { bmiCalculator, minMaxWeight } from "../utils/bmiCalculator";
 
 interface Metric {
   weight: number;
@@ -40,9 +40,6 @@ function Metric(props: {
 
   const { weight, height, total } = currentBmi;
 
-  // minWeight = 18.5 / 10000 * height * height
-  // maxWeight = 24.9 / 10000 * height * height
-
   useEffect(() => {
     setCurrentBmi({
       ...currentBmi,
@@ -51,8 +48,10 @@ function Metric(props: {
     });
     props.setBmiMetric(() => total);
     localStorage.setItem("metric", JSON.stringify({ ...currentBmi }));
-    props.setMinWeight(() => (18.5 / 10000) * height * height);
-    props.setMaxWeight(() => (24.9 / 10000) * height * height);
+    // props.setMinWeight(() => (18.5 / 10000) * height * height);
+    // props.setMaxWeight(() => (24.9 / 10000) * height * height);
+    props.setMinWeight(() => minMaxWeight(18.5, 10000, height));
+    props.setMaxWeight(() => minMaxWeight(24.9, 10000, height));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [weight, height, total]);
 
