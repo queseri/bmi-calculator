@@ -5,7 +5,10 @@ export const bgLayout = {
     position: "absolute",
     content: '""',
     top: 0,
-    left: 0,
+    left: {
+      xs: 0,
+      lg: "1.5rem",
+    },
     borderBottom: {
       xs: "1px solid black",
       sm: "none",
@@ -17,7 +20,7 @@ export const bgLayout = {
     height: {
       xs: "110vh",
       sm: "100vh",
-      lg: "140vh",
+      lg: "125vh",
     },
 
     zIndex: 1,

@@ -16,10 +16,12 @@ function Header() {
           item
           component={"a"}
           href="/"
-          sx={{ position: "relative", zIndex: 3 }}
           paddingY={{
+            xs: "1.5rem",
             lg: "2.5rem",
           }}
+          position={"relative"}
+          zIndex={3}
           display={"flex"}
           justifyContent={"center"}
           alignItems={"center"}

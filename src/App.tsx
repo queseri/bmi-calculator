@@ -116,7 +116,7 @@ function App() {
       sx={{
         paddingInline: "1.5rem",
         paddingBlockEnd: "2.5rem",
-       // position: "relative",
+        // position: "relative",
       }}
       maxWidth="lg"
       disableGutters={true}
@@ -148,7 +148,7 @@ function App() {
               component={"form"}
               noValidate
               borderRadius={"16px"}
-              margin={"40px auto"}
+              margin={{ xs: "2.5rem auto", lg: "0.5rem auto" }}
               padding={"16px"}
               boxShadow={"16px 32px 56px 0px rgba(143, 174, 207, 0.25)"}
               sx={{
@@ -304,7 +304,7 @@ function App() {
           marginLeft={0}
           sx={{
             background:
-              "var(--gradient-1, linear-gradient(315deg, #D6E6FE 0%, rgba(214, 252, 254, 0.25%) 100%))",
+              "var(--gradient-1, linear-gradient(315deg, #D6E6FE 0%, rgba(214, 252, 254, 0.25%) 100%))", 
           }}
         >
           <BmiPractices

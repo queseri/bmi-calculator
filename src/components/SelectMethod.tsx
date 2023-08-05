@@ -20,14 +20,16 @@ function SelectMethod(props: {
   const { gunMetal } = status;
 
   return (
-    <FormControl fullWidth>
+    <FormControl fullWidth sx={{paddingBlock: "1rem"}}>
       <FormLabel
         id="measurement"
-        aria-hidden={true}
         sx={{
           fontSize: "1.5rem",
           fontWeight: 600,
           color: { gunMetal },
+          textAlign: {
+            lg: "left",
+          },
         }}
       >
         Enter your details below
