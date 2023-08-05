@@ -20,13 +20,13 @@ function SelectMethod(props: {
   const { gunMetal } = status;
 
   return (
-    <FormControl fullWidth sx={{paddingBlock: "1rem"}}>
+    <FormControl fullWidth sx={{ paddingBlock: "1rem" }}>
       <FormLabel
         id="measurement"
         sx={{
           fontSize: "1.5rem",
           fontWeight: 600,
-          color: { gunMetal },
+          color: gunMetal,
           textAlign: {
             lg: "left",
           },
@@ -54,7 +54,15 @@ function SelectMethod(props: {
             },
           }}
           value="metric"
-          control={<Radio />}
+          control={
+            <Radio
+              sx={{
+                "& .MuiSvgIcon-root": {
+                  fontSize: "2rem",
+                },
+              }}
+            />
+          }
           label="Metric"
         />
         {/*IMPERIAL RADIO BUTTON */}
@@ -66,7 +74,15 @@ function SelectMethod(props: {
             },
           }}
           value="imperial"
-          control={<Radio />}
+          control={
+            <Radio
+              sx={{
+                "& .MuiSvgIcon-root": {
+                  fontSize: "2rem",
+                },
+              }}
+            />
+          }
           label="Imperial"
         />
       </RadioGroup>

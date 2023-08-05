@@ -48,7 +48,7 @@ function App() {
   const colorTheme = useTheme();
   const { status } = colorTheme;
   const { pureWhite, gunMetal, darkElectricBlue } = status;
-
+  
   const handleChangeMethod = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMethod((event.target as HTMLInputElement).value);
   };

@@ -6,10 +6,20 @@ function Hero() {
   const { status } = colorTheme;
   const { gunMetal, darkElectricBlue } = status;
   return (
-    <Grid item xs={12} md={6} >
+    <Grid
+      item
+      xs={12}
+      md={6}
+      paddingRight={{
+        lg: "1rem",
+      }}
+    >
       <Typography
         variant="h1"
         gutterBottom
+        paddingRight={{
+          lg: "3rem",
+        }}
         fontSize={{
           xs: "3rem",
           lg: "4rem",

@@ -14,9 +14,7 @@ img {
   max-width: 100%;
 }
 
-.logo {
- /* height: 6em;
-  padding: 1.5em; */
+.logo { 
   will-change: filter;
   transition: filter 300ms;
   margin-block: 0.5rem;
@@ -46,8 +44,3 @@ img {
   }
 }
 
-@media screen and (min-width: 1200px) {
-  .logo {
-   /* height: 7.5em; */
-  }
-}
