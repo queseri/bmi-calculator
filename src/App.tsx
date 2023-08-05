@@ -315,6 +315,9 @@ function App() {
           spacing={4}
           width={"100%"}
           marginLeft={0}
+          paddingY={{
+            lg: "4rem",
+          }}
           sx={{
             background:
               "var(--gradient-1, linear-gradient(315deg, #D6E6FE 0%, rgba(214, 252, 254, 0.25%) 100%))",
