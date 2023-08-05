@@ -20,7 +20,7 @@ export const bgLayout = {
     height: {
       xs: "110vh",
       sm: "100vh",
-      lg: "125vh",
+      lg: "120vh",
     },
 
     zIndex: 1,
@@ -34,7 +34,7 @@ export const leftPattern = {
   "&::before": {
     position: "absolute",
     content: '""',
-    top: 0,
+    top: "3rem",
     right: "4.5rem",
     width: {
       lg: "100px",

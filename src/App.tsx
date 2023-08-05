@@ -48,7 +48,7 @@ function App() {
   const colorTheme = useTheme();
   const { status } = colorTheme;
   const { pureWhite, gunMetal, darkElectricBlue } = status;
-  
+
   const handleChangeMethod = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMethod((event.target as HTMLInputElement).value);
   };
@@ -182,7 +182,20 @@ function App() {
                 paddingX={"2rem"}
                 paddingY={"1rem"}
                 marginBottom={"2rem"}
-                marginTop={"2rem"}
+                marginTop={{ xs: "2rem", lg: "3.5rem" }}
+                display={{
+                  sm: "flex",
+                }}
+                justifyContent={{
+                  sm: "center",
+                }}
+                alignItems={{
+                  sm: "center",
+                }}
+                gap={{
+                  sm: "4rem",
+                  lg: "2rem",
+                }}
                 sx={{
                   background:
                     "linear-gradient(90deg, #345FF6 0%, #587DFF 100%)",
@@ -254,7 +267,7 @@ function App() {
           container
           justifyContent={"center"}
           alignItems={"center"}
-          paddingY={"8rem"}
+          paddingY={"10rem"}
           position={"relative"}
           sx={leftPattern}
         >
@@ -304,7 +317,7 @@ function App() {
           marginLeft={0}
           sx={{
             background:
-              "var(--gradient-1, linear-gradient(315deg, #D6E6FE 0%, rgba(214, 252, 254, 0.25%) 100%))", 
+              "var(--gradient-1, linear-gradient(315deg, #D6E6FE 0%, rgba(214, 252, 254, 0.25%) 100%))",
           }}
         >
           <BmiPractices
