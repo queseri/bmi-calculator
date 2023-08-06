@@ -16,7 +16,7 @@ function BmiPractices(props: {
       md={props.value}
       sx={{
         display: "flex",
-        gap: "2rem",
+        gap: "3rem",
         flexDirection: {
           xs: "column",
           sm: "row",
@@ -34,6 +34,7 @@ function BmiPractices(props: {
           textAlign={"left"}
           fontSize={"1.5rem"}
           fontWeight={600}
+          gutterBottom
         >
           {props.heading}
         </Typography>

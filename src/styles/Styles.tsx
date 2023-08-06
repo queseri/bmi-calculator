@@ -34,8 +34,8 @@ export const leftPattern = {
   "&::before": {
     position: "absolute",
     content: '""',
-    top: "3rem",
-    right: "4.5rem",
+    top: "6rem",
+    right: "0.5rem",
     width: {
       lg: "100px",
     },

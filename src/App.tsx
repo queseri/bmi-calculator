@@ -267,7 +267,8 @@ function App() {
           container
           justifyContent={"center"}
           alignItems={"center"}
-          paddingY={"10rem"}
+          paddingTop={"10rem"}
+          paddingBottom={"6.5rem"}
           position={"relative"}
           sx={leftPattern}
         >
@@ -280,7 +281,10 @@ function App() {
             sm={6}
             paddingX={{
               sm: "2rem",
-              lg: "3.5rem",
+              lg: "3rem",
+            }}
+            paddingTop={{
+              lg: "5rem",
             }}
           >
             <Typography
@@ -315,7 +319,10 @@ function App() {
           spacing={4}
           width={"100%"}
           marginLeft={0}
-          paddingY={{
+          paddingTop={{
+            lg: "2.5rem", //"4rem"
+          }}
+          paddingBottom={{
             lg: "4rem",
           }}
           sx={{
@@ -386,6 +393,9 @@ function App() {
               color={darkElectricBlue}
               textAlign={{
                 md: "left",
+              }}
+              paddingTop={{
+                lg: "2rem",
               }}
             >
               Although BMI is often a practical indicator of healthy weight, it
